@@ -1,0 +1,119 @@
+\capitulo{3}{Conceptos teóricos}
+
+En esta sección se detallaran los conceptos teóricos necesarios para el desarrollo del proyecto. 
+
+Algunos conceptos teóricos de \LaTeX \footnote{Créditos a los proyectos de Álvaro López Cantero: Configurador de Presupuestos y Roberto Izquierdo Amo: PLQuiz}.
+
+\section{Sistemas Embebidos}
+
+Los sistemas embebidos o empotrados son herramientas de computación programadas con una o varias funcionalidades concretas. 
+Las grandes ventajas de estos sistemas son que trabajan de forma autónoma, ininterrumpida y sin necesidad de mantenimiento. Estas características hacen que su uso sea muy interesante para el sector industrial.[oasys]
+
+\subsection{Hardware}
+
+En los sistemas embeebidos. practicamente todos los componentes estan integrados en la placa base. Este hardware tambien provee la opcion de conectar perifericos mediante pines o entradas especificas para un periferico en cooncreto.[oasys] 
+
+\subsubsection{Hardware del Proyecto}
+
+//////////////////////
+k64f y caracteristicas
+esp8266
+
+\subsection{Software}
+
+El software embebido o empotrado reside en memoria de sólo lectura y se utiliza para controlar productos y sistemas de los mercados industriales y de consumo [redlyc].
+
+\subsubsection{Software del Proyecto}
+
+/////////////////// No se yo si poner esto
+mcuexpresso
+drivers, middleware, SO, etc
+jlink
+
+
+\section{Tecnologias de Conexion para SE}
+
+Existen varias formas de comunicarse con los SE, tanto con componentes externos como entre dos o mas microcontroladores. Por lo general, se pueden conectar a los SE periféricos que lo doten de conexiones infrarrojas bluetooth wifi, entre otros. De esta manera conseguimos que podamos enviar y recibir información a estos sistemas. En este apartado vamos a hablar sobre las conexiones de red wifi y ethernet que son las que hemos usado en este proyecto.
+
+PROTOCOLO UTILIZADO TCP/IP + CAPAS
+
+\subsection{WIFI}
+
+
+
+\subsection{Ethernet}
+
+\section{Conexion Serial, I2C}
+
+
+
+\section{Referencias}
+
+Las referencias se incluyen en el texto usando cite \cite{wiki:latex}. Para citar webs, artículos o libros \cite{koza92}.
+%- https://oasys-sw.com/sistemas-embebidos-industria/
+%- https://www.redalyc.org/pdf/944/94415759009.pdf
+- 
+
+\subsubsection{NOTAS}
+
+En oasys tienes mas informacion sobre el ambito industrial. beneficios y vulnerabilidades
+
+\section{Imágenes}
+
+Se pueden incluir imágenes con los comandos standard de \LaTeX, pero esta plantilla dispone de comandos propios como por ejemplo el siguiente:
+
+\imagen{escudoInfor}{Autómata para una expresión vacía}
+
+
+
+\section{Listas de items}
+
+Existen tres posibilidades:
+
+\begin{itemize}
+	\item primer item.
+	\item segundo item.
+\end{itemize}
+
+\begin{enumerate}
+	\item primer item.
+	\item segundo item.
+\end{enumerate}
+
+\begin{description}
+	\item[Primer item] más información sobre el primer item.
+	\item[Segundo item] más información sobre el segundo item.
+\end{description}
+	
+\begin{itemize}
+\item 
+\end{itemize}
+
+\section{Tablas}
+
+Igualmente se pueden usar los comandos específicos de \LaTeX o bien usar alguno de los comandos de la plantilla.
+
+\tablaSmall{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{herramientasportipodeuso}
+{ \multicolumn{1}{l}{Herramientas} & App AngularJS & API REST & BD & Memoria \\}{ 
+HTML5 & X & & &\\
+CSS3 & X & & &\\
+BOOTSTRAP & X & & &\\
+JavaScript & X & & &\\
+AngularJS & X & & &\\
+Bower & X & & &\\
+PHP & & X & &\\
+Karma + Jasmine & X & & &\\
+Slim framework & & X & &\\
+Idiorm & & X & &\\
+Composer & & X & &\\
+JSON & X & X & &\\
+PhpStorm & X & X & &\\
+MySQL & & & X &\\
+PhpMyAdmin & & & X &\\
+Git + BitBucket & X & X & X & X\\
+Mik\TeX{} & & & & X\\
+\TeX{}Maker & & & & X\\
+Astah & & & & X\\
+Balsamiq Mockups & X & & &\\
+VersionOne & X & X & X & X\\
+} 

@@ -1,0 +1,51 @@
+/**
+ * Copyright 2019 rpc0027
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * @file i2c.h
+ * @author RPC0027
+ * @date December 2018
+ * @version 1.0
+ *
+ * @brief Interface between serial bus I2C and LCD.
+ *
+ * Send bytes of data to the device at the given slave address.
+ *
+ */
+
+#ifndef I2C_H
+#define I2C_H
+
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
+#include <stdint.h>
+
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+#define TX_SIZE (sizeof(uint8_t)) /**< Size of the data to transmit. */
+#define I2C I2C_1_PERIPHERAL /**< Enabled peripheral on the board.*/
+
+/*******************************************************************************
+ * Prototypes
+ ******************************************************************************/
+void select_slave(uint8_t slave_address);
+void send_byte(uint8_t chr);
+
+#endif /* I2C_H */
+
+/*** end of file ***/

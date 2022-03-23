@@ -1,0 +1,493 @@
+\apendice{Plan de Proyecto Software}\label{ch:plan}
+
+\section{Introducción} \label{sec:plan-intro}
+En el este capitulo se describe el resultado obtenido tras la planificación del
+proyecto \extranjerismo{software}.
+
+La planificación toma dos vertientes. Primero se analiza la planificación 
+temporal del proyecto. En esta fase se determina de manera general la cantidad
+y el tipo de tareas a realizar. Una vez identificadas las tareas se puede
+estimar el tiempo requerido para su realización. Agregando las estimaciones se
+puede calcular el tiempo total estimado para realizar el proyecto completo.
+
+Al usar la metodología Scrum, tras terminar cada \extranjerismo{sprint} se
+evalúa si el desarrollo se está ciñendo a lo esperado y modificar las
+estimaciones en consecuencia. Por lo que la planificación inicial puede
+se puede desviar a lo largo del desarrollo.
+
+Por otra parte se realiza un análisis de la viabilidad del proyecto. En todo
+desarrollo se ven involucrados diferentes factores que pueden determinar la
+viabilidad o no del proyecto. Los circunstancias analizadas son la viabilidad
+económica y la viabilidad legal. Se busca conocer el coste económico estimado
+en la realización del proyecto. Y también se quiere analizar el tipo de
+licenciamiento \extranjerismo{software} que afecta al proyecto. Así como las
+licencias que se van a asignar.
+
+
+
+\section{Planificación temporal} \label{sec:plan-temporal}
+
+Como se han empleado la metodología Scrum, la planificación se ha realizado
+entorno a los \extranjerismo{sprints}. En la planificación inicial se
+establecieron de forma general el número de \extranjerismo{sprints} y el
+objetivo de cada uno de ellos.
+
+La duración asignada a los \extranjerismo{sprints} se extendía desde una semana
+a un mes. Para la gestión del proyecto se ha usado ZenHub y con él se pudo
+asignar una estimación temporal a las tareas en forma de
+\extranjerismo{Story points}. La puntuación va desde un punto, para las
+tareas más simples y breves; hasta los cuarenta puntos, de las tareas más
+complejas y que podían ocupar la mayor parte del tiempo del
+\extranjerismo{sprint}.
+
+La planificación inicial fue la siguiente:
+\begin{itemize}
+  \item \extranjerismo{Sprint} 1 Estudio e investigación
+  \item \extranjerismo{Sprint} 2 Comunicarse con la placa usando TCP/IP 
+  \item \extranjerismo{Sprint} 3 Implementar las funciones del 
+    \extranjerismo{hardware}
+  \item \extranjerismo{Sprint} 4 Desarrollar la aplicación web
+  \item \extranjerismo{Sprint} 5 Finalizar la documentación de la memoria
+  \item \extranjerismo{Sprint} 6 Finalizar la documentación de los apéndices
+\end{itemize}
+
+A continuación se muestra la planificación específica de cada
+\extranjerismo{sprint} mostrando sus objetivos, las tareas que los componen,
+la estimación de cada tarea y el resultado obtenido tras su finalización.
+
+\clearpage
+
+\subsection{Plan del \extranjerismo{Sprint} 1} \label{sec:plan-s1}
+La estimación del \extranjerismo{sprint} se estableció en una semana de
+duración. Con en este \extranjerismo{sprint} se realizaba la primera toma de
+contacto con el proyecto. Las tareas a realizar giraban en torno al estudio de
+la placa de desarrollo y sobre la elección del resto de herramientas, técnicas y
+metodologías.
+
+Acciones a realizar en este \extranjerismo{sprint}:
+\begin{itemize}
+  \item Estudio de las herramientas de trabajo.
+  \item Investigación sobre la placa de desarrollo FRDM-K64F.
+  \item Estudio sobre FreeRTOS y lwIP.
+  \item Elección de las herramientas y \extranjerismo{software} a emplear.    
+\end{itemize}
+
+\imagen{sprint1}{Tareas planificadas para el Sprint 1}
+
+Las tareas del \extranjerismo{sprint} se realizaron según lo previsto al plan.
+El estudio sobre el IDE resultó la tarea más compleja de acuerdo a lo estimado,
+pues hubo que aprender a usar el IDE y sus herramientas. Al terminar sin
+imprevistos se pudo planear las tareas del siguiente \extranjerismo{sprint}.
+
+\clearpage
+
+\subsection{Plan del \extranjerismo{Sprint} 2} \label{sec:plan-s2}
+La estimación del \extranjerismo{sprint} se estableció en una semana de
+duración. Conociendo las herramientas con las que trabajar en este
+\extranjerismo{sprint} se pretendía comenzar el desarrollo.
+
+Acciones a realizar en este \extranjerismo{sprint}:
+\begin{itemize}
+  \item Creación del proyecto de trabajo.
+  \item Configurar el \extranjerismo{hardware}.
+  \item Realizar las primeras comunicaciones TCP/IP.  
+  \item Realizar las operaciones remotas con la placa.
+\end{itemize}
+
+\imagen{sprint2}{Tareas planificadas para el Sprint 2}
+
+El \extranjerismo{sprint} se completó de acuerdo a lo previsto. Aunque se 
+estimó que la configuración del proyecto y el uso de lwIP no serían muy
+difíciles, su ejecución resultó más compleja, sin embargo, se realizó a tiempo
+para planificar y empezar el siguiente \extranjerismo{sprint}.
+
+\clearpage
+
+\subsection{Plan del \extranjerismo{Sprint} 3} \label{sec:plan-s3}
+De nuevo, la estimación del \extranjerismo{sprint} se estableció en una semana
+de duración. Como era posible transmitir datos a la placa, en este
+\extranjerismo{sprint} se deseaba ampliar la funcionalidad de la placa K64F
+con el uso de sus periféricos.
+
+Acciones a realizar en este \extranjerismo{sprint}:
+\begin{itemize}
+  \item Configurar los LED RBG y realizar la programación para su manejo remoto.
+  \item Configurar el LCD y realizar la programación para su manejo remoto. 
+  \item Configurar los LED PWM y realizar la programación para su manejo remoto.
+\end{itemize}
+
+\imagen{sprint3}{Tareas planificadas para el Sprint 3}
+
+Este fue el primer \extranjerismo{sprint} en desviarse de lo previsto. 
+La configuración del bus I\textsuperscript{2}C y la adaptación de la librería
+del LCD requirió mucho más tiempo de lo estimado. Al aumentar la duración
+de este \extranjerismo{sprint} se tuvo que retrasar el inicio del siguiente.
+Tras terminarlo, se pudieron planificar las tareas siguientes.
+
+\clearpage
+
+\subsection{Plan del \extranjerismo{Sprint} 4} \label{sec:plan-s4}
+Con el cambio al desarrollo de la aplicación web y teniendo en cuenta la
+posibilidad de nuevos retrasos como en el \extranjerismo{sprint} anterior,
+en este se decidió aumentar la planificación temporal a dos semanas.
+
+Acciones a realizar en este \extranjerismo{sprint}:
+\begin{itemize}
+  \item Analizar el intercambio de datos necesario entre app y placa.
+  \item Diseñar las interfaces de la aplicación. 
+  \item Implementar las funciones de comunicación.
+  \item Desarrollar la interfaz web.
+\end{itemize}
+
+\imagen{sprint4}{Tareas planificadas para el Sprint 4}
+
+El desarrollo de la aplicación presentó varios desafíos, el aprendizaje y 
+programación con CSS fueron algunos de ellos. Pese a todo la duración no 
+se desvió demasiado de lo previsto.
+
+\clearpage
+
+\subsection{Plan del \extranjerismo{Sprint} 5} \label{sec:plan-s5}
+Terminados el desarrollo del \extranjerismo{sofware} de la placa y 
+el desarrollo de la aplicación web faltaba completar la documentación del 
+proyecto. Inicialmente se planificó que el \extranjerismo{sprint}
+tendría una duración de dos semanas.
+
+Acciones a realizar en este \extranjerismo{sprint}:
+\begin{itemize}
+  \item Completar los distintos capítulos de la memoria.
+\end{itemize}
+
+\imagen{sprint5}{Tareas planificadas para el Sprint 5}
+
+El tiempo dedicado a preparase para usar \LaTeX{} fue erróneamente subestimado.
+Al tener que dedicar varios días más de lo previsto en este punto, el último
+\extranjerismo{sprint} tuvo que empezar más tarde.
+
+\clearpage
+
+\subsection{Plan del \extranjerismo{Sprint} 6} \label{sec:plan-s6}
+Completada la memoria se completaría la información proporcionada con una
+serie de anexos. La duración se estimó en una semana debido a los plazos
+temporales restantes.
+
+Acciones a realizar en este \extranjerismo{sprint}:
+\begin{itemize}
+  \item Completar los distintos apéndices.
+\end{itemize}
+
+\imagen{sprint6}{Tareas planificadas para el Sprint 6}
+
+Completada la documentación se pudo proceder a la conclusión satisfactoria
+del proyecto.
+
+\clearpage
+
+\subsection{Planificación temporal completa} \label{sec:plan-total}
+En las siguientes páginas se pueden comparar la planificación inicial
+y la final.
+
+\imagen{tareas1}{Sprints planificados inicialmente}
+
+\imagen{tareas2}{Sprints planificados finalmente}
+
+\figuraApaisadaSinMarco{0.7}{gantt1}{Diagrama de Gantt de la planificación
+inicial}{fig:gantt1}{}
+
+\figuraApaisadaSinMarco{0.8}{gantt2}{Diagrama de Gantt de la planificación
+final}{fig:gantt2}{}
+
+\clearpage
+
+
+
+\section{Estudio de viabilidad}
+
+
+\subsection{Viabilidad económica}
+Para determinar la viabilidad económica del proyecto, en este apartado se
+computan los gastos previstos durante el desarrollo y los posibles beneficios
+si los hubiera. De haberse realizado en una empresa, los costes se calcularían
+como se muestra a continuación.
+
+\subsubsection{Coste de personal}
+El desarrollo se ha realizado por una sola persona en un tiempo aproximado de
+90 días, así que, todos los costes de personal son relativos a esa única
+persona. El salario mensual bruto asignado ha sido de \EUR{2200}.
+
+De manera simplificada, sin calcular  el salario neto se puede calcular de la siguiente forma:
+\begin{equation} \label{eq:salario}
+  salario\ bruto - IRPF - SS = salario\ neto
+\end{equation}
+
+Por tanto, para un mes dado el salario neto a percibir sería el siguiente:
+\begin{equation} \label{eq:salario}
+  2200\text{\euro} - 29\% \footnote{Usados los tramos más altos de las
+  escalas autonómica \cite{webpage:cyl} y estatal \cite{webpage:at} aplicables,
+  el cálculo está simplificado al no tener en cuenta la progresividad de
+  la escala de tramos.}
+  - 6,35\% = 1422,30\text{\euro}
+\end{equation}
+
+\subsubsection{Costes pertenecientes a la SS}
+Sobre el salarios se producen ciertas retenciones y pagos a la Seguridad Social,
+algunos conceptos corren a cargo de la empresa contratante y otros
+por parte del trabajador. A continuación de calculan sus importes.
+
+Para el cálculo de la retenciones se toma como referencia la tablas de bases
+de cotización ofrecida por la propia Seguridad Social \cite{webpage:ss}. En
+concreto los datos del primer grupo de cotización: ``Ingenieros y Licenciados. 
+Personal de alta dirección no incluido en el artículo 1.3.c)
+del Estatuto de los Trabajadores''. Este grupo tiene unas bases mínimas de
+\EUR{1466,40}/mes. Y unas máximas de \EUR{4070,10}/mes.
+
+\tablaSmallSinColores{Costes pertenecientes a la SS}{l l l}{costes-ss}
+{\multicolumn{1}{l}{Concepto} & Empresa & Trabajador\\}
+{
+  Contingencias comunes & 23,60\% & 4,70\%\\
+  Desempleo             &  5,50\% & 1,55\%\\
+  FOGASA                &  0,20\% & 0,00\%\\
+  Formación             &  0,60\% & 0,10\%\\
+  \textbf{Total}        & \textbf{29,9\%} & \textbf{6,35\%}\\
+}
+
+Por consiguiente, la empresa tendría que añadir a los costes el 23,9\% del
+salario del trabajador y el trabajador sufriría una retención del 6,35\%.
+
+\subsubsection{Coste total de personal}
+El coste total se calcula con la siguiente fórmula:
+\begin{equation} \label{eq:salario}
+  (salario\ mensual + retenciones\ ss) \times n^{o}\ meses = coste\ total
+\end{equation}
+
+De modo que el coste total se obtiene así:
+\begin{equation} 
+  (2200\text{\euro} + 657,8\text{\euro}) \times 3 = 8573,4\text{\euro}
+\end{equation}
+
+La tabla siguiente tabla recoge diferentes costes asociados al personal y 
+su coste total.
+
+\tablaSmallSinColores{Coste total de personal}{l l}{personal}
+{\multicolumn{1}{l}{Concepto} & Coste\\}
+{
+  Salarios          & \EUR{2200}\\
+  Seguridad Social  & \EUR{657,8}\\
+  Meses             & 3 meses\\
+  \textbf{Total}    & \textbf{\EUR{8573,4}}\\
+}
+
+\subsubsection{Coste del \extranjerismo{hardware}}
+Para realizar el desarrollo se precisa contar son varios dispositivos. Aunque
+en la Ley del Impuesto sobre Sociedades \cite{webpage:is} se indica un máximo
+de 8 años para amortizar los equipos para procesos de información, se considera
+la que renovación de \extranjerismo{hardware} se produce en un periodo más corto
+de 4 años. Así pues, la amortización se calcula en función de esos 4 años.
+
+El coste mensual de un dispositivo se calcula así:
+\begin{equation} \label{eq:coste-hw}
+  coste\ del\ dispositivo\ /\ periodo\ de\ amortización\ (en\ meses)
+\end{equation}
+
+Por lo tanto, el coste de un dispositivo es el siguiente:
+\begin{equation} \label{eq:coste-amor-hw}
+  coste\ mensual\ amortizado\ \times n^{o}\ meses\
+\end{equation}
+
+En el desarrollo solo se va a necesitar una estación de trabajo, así pues, el
+coste total del \extranjerismo{hardware} es el mostrado en la tabla a
+continuación.
+
+\tablaSmallSinColores{Coste del \extranjerismo{hardware}}{l l l}{coste-hw}
+{\multicolumn{1}{l}{\extranjerismo{Hardware}} & Coste & Coste amortizado\\}
+{
+  Estación de trabajo & \EUR{1250} & \EUR{104,16}\\
+  \textbf{Total}      & \EUR{1250} & \textbf{\EUR{104,16}}\\
+}
+
+\subsubsection{Coste del \extranjerismo{software}}
+El desarrollo necesita de varios programas y aplicaciones. De igual manera que
+el \extranjerismo{hardware}, la Ley del Impuesto sobre Sociedades
+\cite{webpage:is} indica el máximo de años para realizar la amortización.
+En los sistemas y programas informáticos es de 6 años. Pero coincidiendo con el
+periodo de renovación del \extranjerismo{hardware}, la amortización se calcula
+en un periodo menor de 4 años.
+
+Las fórmulas para calcular las amortizaciones son equivalentes a las usadas
+en el \extranjerismo{harware} \ref{eq:coste-hw} y \ref{eq:coste-amor-hw}.
+
+Otra parte de \extranjerismo{software} se emplea bajo suscripción, en los
+cálculos solo se computa el coste de los meses que se usó dicha suscripción.
+
+Hay que tener en cuenta, que gran parte del \extranjerismo{software} utilizado
+se publica bajo licencias que permiten su uso sin coste y que gracias a esto se
+reducen significativamente los costes del \extranjerismo{software}.
+En consecuencia solo se calculan los costes del \extranjerismo{software} que no
+es gratuito.
+
+\tablaSmallSinColores{Coste del \extranjerismo{software}}{l l l}{coste-sw}
+{\multicolumn{1}{l}
+{\extranjerismo{Software}}              & Coste        & Coste amortizado\\}
+{
+  Windows 10 Pro\cite{webpage:win10pro} & \EUR{259}    & \EUR{21,58}\\
+  Office 365\cite{webpage:office365}    & \EUR{126}    & \EUR{31,5}\\
+  Adobe CC\cite{webpage:adobecc}        & \EUR{359,88} & \EUR{89,97}\\
+  \textbf{Total}                        & \EUR{744,88} & \textbf{\EUR{143,05}}\\
+}
+
+\subsubsection{Coste del sistema empotrado}
+El sistema empotrado se ha realizado con la ayuda de diversos componentes que
+también tienen unos costes de adquisición asociados.
+
+\tablaSmallSinColores{Coste del SE}{l l}{coste-se}
+{\multicolumn{1}{l}
+{Componente}                                     & Coste        \\}
+{ 
+  Placa FRDM-K64F\cite{webpage:k64f}             & \EUR{32,52} \\
+  Placa Arduino Basic I/O\cite{webpage:basic-io} & \EUR{19,00} \\
+  Pantalla LCD\cite{webpage:lcd}                 & \EUR{8,91}  \\
+  Placas de pruebas\cite{webpage:placas}         & \EUR{12,24} \\
+  Cables puente\cite{webpage:cables}             & \EUR{4,98}  \\
+  Cable de par trenzado\cite{webpage:rj45}       & \EUR{4,88}  \\
+  \textbf{Total}                                 & \textbf{\EUR{82,53}} \\
+}
+
+\subsubsection{Coste total del proyecto}
+Sumando todos los costes anteriores se puede calcular el coste total de todo
+el proyecto.
+
+\tablaSmallSinColores{Coste total del proyecto}{l l}{coste-total}
+{\multicolumn{1}{l}
+{Tipo de coste}            & Coste        \\}
+{ 
+  Personal                 & \EUR{8573,4} \\
+  \extranjerismo{Hardware} & \EUR{104,16} \\
+  \extranjerismo{Software} & \EUR{143,05} \\
+  Componentes del SE       & \EUR{82,53}  \\
+  \textbf{Total}           & \textbf{\EUR{8903,14}} \\
+}
+
+\subsubsection{Beneficios del proyecto}
+El código fuente del sistema empotrado (SE) y de la aplicación web se encuentran
+disponibles abiertamente. Además, el SE tampoco tiene definida una función
+claramente comercial. Por ello, no se considera que el proyecto
+pueda tener un beneficio económico directo.
+
+Esto tampoco quiere decir que los gastos se hagan a fondo perdido. Más bien,
+se pueden considerar a los gastos como una inversión en investigación, formación
+y adquisición de competencias que permitirán en el futuro crear nuevos SE que
+rentabilicen todos los costes.
+
+
+\subsection{Viabilidad legal}
+Al desarrollar un \extranjerismo{software} hay que tener en consideración
+las implicaciones legales que se presentan al usar \extranjerismo{software}
+de terceros.
+
+Las licencias sirven como instrumento para establecer los términos y condiciones
+en los que se pueden utilizar el \extranjerismo{software} licenciado. Para
+poder definir que licencias usar en el proyecto es necesario conocer las
+licencias utilizadas y la restricciones que pueden imponer.
+
+\subsubsection{Licencias utilizadas en el desarrollo del SE}
+Para desarrollar el \extranjerismo{software} de la placa se ha utilizado
+de código fuente de terceros que se describe a continuación.
+\begin{itemize}
+  \item El código generado por MCUXpresso se proporciona bajo la licencia
+  ``The 3-Clause BSD License'' (BSD-3), también conococida como la
+  ``New BSD License''o ``Modified BSD License''.
+  \item Otra parte del código generado por MCUXpress se licencia con 
+  ``The Clear BSD License''. La licencia es similar a BSD-3, pero indica
+  expresamente que no se conceden derechos sobre patentes.
+  \item El código perteneciente a FreeRTOS es propiedad de Amazon.com, Inc.
+  Se permite el uso, copia, modificación, publicación, distribución, volver a
+  licenciar y comercializar, manteniendo siempre el aviso de derechos de autor.
+  \item El código de lwIP se entrega con la licencia BSD-3.
+  \item Parte del código relacionado con el procesador de la placa pertenece a
+  ARM Limited. El código se proporciona con la licencia Apache 2.0.
+\end{itemize}
+
+Así pues, se encuentran licencias como BSD-3 o Apache 2.0 que permiten el uso,
+copia, modificación y redistribución del código.
+
+\subsubsection{Licencia para el SE}
+Teniendo en cuanta que el código fuente del \extranjerismo{software} del SE
+se pretende que sea abierto, se va a utilizar una licencia en línea con las
+mostradas anteriormente.
+
+En concreto se va a emplear la licencia Apache 2.0. Sus características 
+principales se pueden ver resumidas en la siguiente tabla.
+
+\tablaSmallSinColores{Licencia Apache 2.0}{l l l l}{apache}
+{\multicolumn{1}{l}
+{Permisos}        & Condiciones                & Limitaciones    \\}
+{ 
+  Uso comercial   & Aviso de licencia          & Uso de marcas registradas \\
+  Modificación    & y derechos de autor        & Responsabilidad           \\
+  Distribución    & Declaración de los cambios & Garantía                  \\ 
+  Uso en patentes \\
+  Uso privado     \\
+}
+
+\subsubsection{Licencia para la aplicación web}
+En el caso de la aplicación web no se ha requerido de bibliotecas o librerías
+de terceros como en el caso del SE. Del mismo modo que en el SE, la aplicación
+web se licencia con Apache 2.0.
+
+\subsubsection{Utilización de la licencia Apache}
+Para poner en conocimiento el uso de la licencia Apache
+\cite{webpage:apache2-apply} se ubica en el directorio raíz del proyecto un
+archivo de texto con el nombre ``LICENSE'' que incluye los términos de la
+licencia. El archivo de texto se puede obtener desde el sitio web de Apache
+\cite{webpage:apache2-license}.
+
+En caso de ser necesario, se incluye un fichero llamado ``NOTICE'' con
+información adicional en el mismo directorio de la licencia.
+
+Por último, el texto a continuación es incluido en todos los ficheros 
+fuente. Se tiene que añadir como comentario en el comienzo del fichero,
+sustituyendo el texto entre corchetes por el nombre del autor y por la fecha
+que correspondan.
+
+\begin{quotation}
+  Copyright [yyyy] [name of copyright owner] \bigskip
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at \bigskip
+  
+  \quad http://www.apache.org/licenses/LICENSE-2.0 \bigskip
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an ``AS IS'' BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+\end{quotation}
+
+\subsubsection{Licencia para la documentación}
+Para el licenciamiento de la documentación se opta por otro tipo de licencia
+más adecuada al tipo de obra. La licencia escogida es
+Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
+(CC BY-NC-SA 4.0) \cite{webpage:cc}.
+
+Esta licencia permite que la obra sea compartida libremente. Puede ser copiada
+y redistribuida en cualquier medio o formato. También se puede reeditar,
+transformar y crear obras derivadas a partir de la obra original. Como condición
+se requiere la atribución de la autoría original y que nuevas publicaciones
+se realicen de forma gratuita y con el mismo licenciamiento que la actual.
+
+\tablaSmallSinColores{Licencia CC BY-NC-SA 4.0}{l l l l}{ccbyncsa4}
+{\multicolumn{1}{l}
+{Permisos}      & Condiciones                & Limitaciones    \\}
+{ 
+  Distribución  & Crédito al autor           & Responsabilidad           \\  
+  Modificación  & Aviso de licencia          & Uso de patentes           \\
+  Uso privado   & y derechos de autor        & Uso de marcas registradas \\
+                & Declaración de los cambios & Garantía                  \\ 
+                & No comercial               &                           \\ 
+                & Mismo licenciamiento       &                           \\ 
+}
+
+El uso de la licencia se indica con una imagen y un breve texto al final de cada
+documento.

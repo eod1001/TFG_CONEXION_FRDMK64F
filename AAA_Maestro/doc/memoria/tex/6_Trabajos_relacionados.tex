@@ -1,0 +1,128 @@
+\capitulo{6}{Trabajos relacionados}{\label{ch:relacionados}}
+En el campo de los SE se han realizado sistemas complejos y de gran valor en 
+numerosos ámbitos. En este sentido, \href{https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k6x-ethernet/kinetis-k64-120-mhz-256kb-sram-microcontrollers-mcus-based-on-arm-cortex-m4-core:K64_120}
+{NXP} muestra varias aplicaciones de los SE en las que se pueden emplear el
+mismo MCU, Kinetis~\textsuperscript{\tiny\textregistered} K64, existente en la
+placa de desarrollo.
+
+Los sistemas expuestos muestran características similares a las presentes en la
+placa K64F y a las usadas en este proyecto. El uso de conectividad en red via
+TCP/IP hace posible la comunicación con el SE a distancia. Y la utilización de
+GPIO, I\textsuperscript{2}C o PWM permite operar con los sensores, actuadores u
+otros componentes del SE.
+
+A continuación se muestran cuatro sistemas pertenecientes a diferentes sectores
+de aplicación. Los ejemplos pertenecen al sector industrial, sanitario y
+comercial. En concreto, los sistemas operados por SE son los siguientes:
+
+\begin{itemize}
+  \item Vehículo no tripulado
+  \item Sistema de telesalud
+  \item Cama de hospital eléctrica
+  \item Impresora de terminal punto de venta
+\end{itemize}
+
+La funcionalidad, desempeño y ámbito de uso de las aplicaciones resultan muy
+diversas. Así pues, queda patente la versatilidad y el amplio espectro de
+entornos en los que se pueden encontrar SE.
+
+\subsection{Vehículo no tripulado}{\label{sec:uv}}
+Un vehículo no tripulado es aquel vehículo capaz de funcionar sin un humano a
+bordo. De forma general los vehículos no tripulados se clasifican en función del
+medio en el que operan. Pueden ser terrestres, aéreos, acuáticos, submarinos,
+espaciales... Independientemente del tipo que sean y de que estén operados por
+control remoto o sean autónomos, los vehículos se sirven de SE para controlar
+sus funciones.
+
+\imagen{uv}{Diagrama de bloques de un vehículo no tripulado \cite{webpage:uv}}
+
+Con LED controlados por GPIO se puede conocer el estado del vehículo. Para
+dotar de conectividad al vehículo están disponibles interfaces cableadas e
+inalámbricas.
+
+El uso de PWM es una característica compartida con el proyecto. Mientras que 
+en el proyecto se ha usado para regular la intensidad del brillo de unas
+luces, en los vehículos no tripulados se emplea PWM para regular sus motores
+
+Aunque no se ha incluido en el proyecto, la capacidad de usar tarjetas de
+memoria, de dispositivos conectados a un puerto USB o la comunicación con
+periféricos usando SPI está presente tanto en vehículos como en la placa de
+desarrollo.
+
+\subsection{Sistema de telesalud}{\label{sec:salud}}
+El acceso a la asistencia sanitaria no siempre es factible o asequible. Vivir
+en entornos rurales alejados de centros médicos, la falta de medios de
+transporte, la pérdida de movilidad de los pacientes, o la falta de recursos
+económicos son causas que pueden impedir dicha asistencia. Con el avance de la
+tecnología y las telecomunicaciones ha surgido la posibilidad de abordar dicha
+problemática con el uso de sistemas de telesalud.
+
+Con el uso de sensores de diverso tipo se recogen datos sobre el estado de salud
+del paciente. Su presión arterial, su ritmo cardíaco, su temperatura corporal,
+etc. Los datos son recogido por el sistema, procesados y retransmitidos al
+personal médico encargado de velar por la salud del paciente.
+
+En la figura \ref{fig:telesalud} se muestran los componentes que integran el
+sistema. Entorno al MCU se hallan presentes una interfaz infrarroja que recoge
+los datos de los sensores y una pantalla que muestra información al paciente.
+También se puede ver como el sistema usa PWM para generar sonidos.
+
+Periódicamente el sistema envía los datos bien usando una conexión Ethernet o
+bien usando una conexión USB a un ordenador conectado a Internet. De manera 
+opcional se puede conectar el sistema a Internet de forma inalámbrica. Este
+hecho serviría para aumentar la portabilidad del sistema de telesalud al
+completo.
+
+\imagen{telesalud}{Diagrama de bloques de un sistema de telesalud
+\cite{webpage:telehealth}}
+
+\subsection{Cama de hospital eléctrica}{\label{sec:cama}}
+Siguiendo en el sector sanitario, se presenta otra muestra de aplicación de SE
+en las camas de hospital eléctricas. El uso de SE permite ofrecer el 
+máximo confort posible al paciente y mejorar atención sanitaria recibida.
+
+Con una serie de elementos de regulación se puede acomodar la cama a las
+necesidades del usuario. Para conseguir tal comodidad el SE cuenta con motores
+encargados de regular la inclinación o altura de varias partes de la cama. 
+
+Al integrar un monitor de constantes vitales o una bomba de infusión, 
+dispostivos también creados con SE, se puede realizar una monitorización y 
+atención completa del paciente. Y si además se conecta la cama a una red
+inalámbrica se abre la posibilidad de monitorizar y atender remotamente al
+paciente. Por ejemplo, desde un control de enfermería.
+
+Para comunicarse telefónicamente con el enfermo se utiliza la conexión
+Ethernet en conjunción con la tecnología voz sobre protocolo de internet (VoIP).
+
+Por último, que la cama disponga de una pantalla LCD permite que conocer 
+\extranjerismo{in situ} el estado de todo el sistema, paciente incluido.
+
+\imagen{cama}{Diagrama de bloques de una cama de hospital eléctrica
+\cite{webpage:bed}}
+
+\subsection{Impresora de terminal punto de venta (TPV)}{\label{sec:tpv}}
+Para terminar, se pasa al ámbito del sector minorista. Se muestra el sistema
+utilizado en una impresora de un TPV. La impresora está compuesta por
+dos SE. Mientras que uno de ellos se encarga de las entradas digitales, el
+otro se ocupa del control de los motores y dispositivos de impresión.
+
+Las opciones de conectividad permiten comunicarse con la impresora de varias
+maneras. Con la conexión Ethernet se puede trabajar en red con la impresora.
+Igualmente, se pueden usar las conexión USB o RS-485.
+
+Para controlar el \extranjerismo{hardware} relativo al proceso de impresión
+se cuenta con la ayuda de un segundo SE. Como el SE auxiliar recibe señales
+analógicas requiere usar ADC, el resto de entradas y salidas se conectan
+directamente a los pines GPIO. Finalmente, la comunicación con el SE principal
+se realiza mediante I\textsuperscript{2}C o SPI.
+
+Por otra parte, el SE principal cuenta con mayor número de conexiones al
+recibir las entradas del usuario, los controles digitales, gestionar la
+conectividad y manejar los sensores.
+
+De nuevo están presentes características utilizadas a su vez en el proyecto:
+conectividad en red a través de un puerto Ethernet, conexión con periféricos
+usando el bus de datos serie I\textsuperscript{2}C y comunicaciones diversas via
+GPIO.
+
+\imagen{tpv}{Diagrama de bloques de una impresora de TPV\cite{webpage:tpv}}

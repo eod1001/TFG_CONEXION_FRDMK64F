@@ -1,0 +1,227 @@
+\capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
+{\label{ch:aspectos}}
+Durante el desarrollo del proyecto han surgido diversos hechos relevantes. En
+este capítulo se comentan los eventos ocurridos y la decisiones tomadas al
+respecto.
+
+\section{Aprendizaje}{\label{sec:aprendizaje}}
+Una faceta fundamental del proyecto ha sido el aprendizaje. Conocer nuevas 
+herramientas, técnicas y metodologías, profundizar en las ya conocidas y revisar
+aquellas que hubieran podido caer en el olvido.
+
+Revisando los objetivos personales \ref{sec:obj_personales} se puede ver como
+el deseo de aprendizaje está presente al dejar patente que no solo se quiere
+cumplir con los objetivos generales \ref{sec:obj_generales} y técnicos 
+\ref{sec:obj_tecnicos}.
+
+Querer utilizar nuevas herramientas, técnicas, metodologías, etc. no está exento
+de problemas o contratiempos que no dudaron en dejarse ver desde el inicio.
+
+\section{Inicio}{\label{sec:inicio}}
+Para desarrollar el \extranjerismo{software} que va a utilizar la placa K64F
+es necesario usar un IDE. En la sección sobre los IDE valorados \ref{sec:ide}
+se comentan brevemente las diferencias entre Kinetis Design Studio (KDS) y
+MCUXpresso.
+
+La decisión de usar MCUXpresso estuvo basada fundamentalmente en el abandono
+por parte de NXP de KDS. Esto no quiere decir que no se pudiera haber usado KDS.
+Pero siguiendo la propia recomendación del fabricante y queriendo usar
+herramientas modernas se tomó la decisión de usar MCUXpresso.
+
+La principal diferencia entre IDE es la presencia de Processor Expert (PE) en
+KDS y la respectiva ausencia en MCUXpresso. Esta herramienta fue la usada en su
+momento para aprender a desarrollar SE. Al perder PE fue necesario dedicar
+tiempo a aprender como usar las nuevas herramientas presentes en la
+\extranjerismo{suite} de MCUXpresso, el IDE, el SDK y las Config Tools.
+
+La primera toma de contacto estuvo apoyada en los ejemplos ofrecidos por el SDK.
+Son pequeñas piezas de código que realizan funciones simples que permiten
+experimentar con la placa y añadir modificaciones para ver como responde.
+
+Familiarizado con el IDE, tocaba aprender a configurar los relojes del sistema.
+Usar como base la configuración de los ejemplos sirvió para conocer que relojes
+se tenían que activar, a que frecuencia y que salidas se tenían que habilitar.
+
+Por último queda configurar el MCU y sus pines. Para poder usar un componente
+hay que decir al MCU que pines se van a utilizar y la función deseada. Que un
+dispositivo funcione correctamente requiere de la sección de los pines 
+correctos y de la configuración eléctrica correcta. Por ejemplo,
+para poder usar el puerto Ethernet no sirve la configuración por defecto sino
+que hay que configurar el estado \extranjerismo{pull-up} de alguno de sus pines.
+
+Dominado MCUXpresso se pudo comenzar el desarrollo propiamente dicho.
+
+\section{Desarrollo con la placa K64F}{\label{sec:desarrollo-k64f}}
+
+\subsection{Técnicas y metodologías}{\label{sec:desarrollo-tym}}
+En esta fase se tomó la decisión junto con el tutor, de integrar metodologías y 
+técnicas que podían resulta beneficiosas para el proyecto.
+
+Una medida tomada fue usar GitHub como repositorio del código y sistema de 
+control de versiones. Además, como los IDE y VS Code están preparados para
+usar Git, su uso resultó bastante asequible y cómodo.
+
+Otra medida tomada fue usar Scrum y para ello el trabajo se planificó en
+sucesivos \extranjerismo{sprints}. Scrum propone equipos de desarrollo
+de varias personas, reuniones diarias, reuniones al terminar el
+\extranjerismo{sprint}, el rol de Scrum Master, el Product Owner, etc.
+Como el proyecto se ha realizado individualmente, usar Scrum ha servido como
+forma de conocer la metodología, usando principalmente el \extranjerismo{sprint}
+como herramienta para dividir el trabajo y planificar el proyecto.
+
+\subsection{Conexión a la red}{\label{sec:desarrollo-red}}
+Con la placa siendo capaz de usar el puerto Ethernet se presentaba el asunto
+de la obtención del dirección IP. Establecer una dirección fija presenta
+problemas si ya está usada o si se conecta en una subred con diferente rango
+de direcciones.
+
+Por este motivo se tomó la decisión de usar DHCP. Esta decisión
+obliga a contar con un servidor DHCP en la misma red a la que se conecta la
+placa. De no obtener dirección la placa se quedaría a la espera indefinidamente.
+Para que el usuario sepa la dirección de la placa, en un primer momento se
+mostraba en la consola de depuración para más tarde mostrar también en el LCD
+tanto la dirección IP como el puerto TCP a la escucha.
+
+Con la pila TCP/IP en funcionamiento era posible enviar paquetes de datos a la
+placa. Como lwIP implementa varios protocolos, ICMP entre ellos, era posible
+realizar \extranjerismo{pings} para comprobar el estado de la placa.
+
+\subsection{Funciones del \extranjerismo{hardware}}{\label{sec:desarrollo-hw}}
+Para ejemplificar el uso de un SE conectado en red se decidió aprovechar el
+\extranjerismo{hardware} incluido en la placa. Representando a unos actuadores y 
+siendo los componentes más visibles de la placa se decidió utilizar los LED de
+colores RGB. Para poder activar o desactivar los LED se determinó enviar un
+comando con una instrucción y argumento específicos para el LED a alterar. El
+comando se transmitiría dentro un paquete TCP.
+
+El parámetro de cada comando sirve para indicar el color a alterar.
+Los comandos para encender los tres colores básicos de los LED RGB son:
+\begin{quotation}
+  ``led:r''
+
+  ``led:g''
+
+  ``led:b''
+\end{quotation}
+
+Como los LED se pueden encender simultáneamente se puede combinar su luz para
+crear nuevos colores. En la tabla siguiente se pueden ver los todos 
+colores posibles. 
+
+\tablaSmall{Colores producibles usando los LED RGB}
+{l c c c}{coloresrgb}
+{\multicolumn{1}{l}{Color} & LED Rojo & LED Verde & LED Azul\\}
+{
+  Rojo     & X &   &   \\
+  Verde    &   & X &   \\
+  Azul     &   &   & X \\
+  Amarillo & X & X &   \\
+  Magenta  & X &   & X \\
+  Cyan     &   & X & X \\
+  Blanco   & X & X & X \\
+  Ninguno  &   &   &   \\
+}
+
+El LCD se incluyó con la intención de mejorar la comunicación del usuario y
+ampliar la funcionalidad del SE. Esta decisión provocó inconveniente que volvía
+a involucrar el uso de MCUXPresso. Con anterioridad para poder utilizar el LCD
+se usaba una librería de funciones adaptada para usar los componentes generados
+por PE. 
+
+En origen la librería ya había sido adaptada desde código para Arduino a
+código para PE. Así que surgió la necesidad de adaptar de nuevo la librería para
+usar el código generado por MCUXpresso. Como la librería usaba funciones de
+espera también se tuvieron que portar estas funciones.
+
+El comando a transmitir indica que la operación se trata de un mensaje para la
+pantalla, la línea en la que mostrar el mensaje y la cadena de caracteres a
+presentar.
+Ejemplos de comandos para mostrar una cadena de caracteres en cada línea:
+\begin{quotation}
+  ``msg:0:Lorem ipsum''
+
+  ``msg:1:dolor sit amet''
+\end{quotation}
+
+La última función añadida fue modificar la intensidad del brillo de los LED
+incorporados en la placa de expansión. La regulación de la intensidad se
+consigue usando los pines compatibles con PWM del MCU. Los pines PWM no
+están comunicados con los LED RGB de la propia placa K64F así que se conectaron
+a los pines de los LED de placa de expansión.
+
+Al transmitir un comando y tras indicar que es una instrucción de tipo PWM,
+los argumentos indican el LED a regular y la intensidad (de 0\% a 100\%)
+deseada. Por ejemplo, los siguientes comandos sirven para regular la intensidad
+de cada LED con incrementos del 25\%.
+\begin{quotation}
+  ``pwm:w:0''
+
+  ``pwm:g:25''
+
+  ``pwm:y:50''
+
+  ``pwm:r:100''
+\end{quotation}
+
+\subsection{Montaje \extranjerismo{hardware}}{\label{sec:desarrollo-montaje}}
+Una vez que cada componente funcionaba de la manera esperada se realizó
+el montaje en las placas de pruebas para poder hacer funcionar el SE al
+completo. 
+
+\subsection{Tareas del RTOS}{\label{sec:desarrollo-rtos}}
+Como se ha visto en la sección sobre \extranjerismo{software} de los SE 
+\ref{sec:se-sw}, es habitual contar con un RTOS encargado de la planificación
+de las tareas ejecutadas. El RTOS a usar fue FreeRTOS \ref{sec:otros} por su
+conocimiento y experiencia previa. Para cada función disponible en la placa se
+creó una tarea concreta. Es decir, hay una tarea para usar el LCD, otra para los
+LED de la placa de expansión y otra para los LED RGB de la propia placa. 
+Las tareas quedan a la espera de recibir un comando de la tarea, de mayor
+prioridad, que está escuchando en la dirección y el puerto asignados.
+
+\subsection{Desarrollo de la aplicación web}{\label{sec:desarrollo-app}}
+Con la placa operativa llegaba el turno de crear una aplicación web que
+permitiese actuar remotamente con la placa. La tecnología para crear la
+aplicación web es JSF, la parte encargada de comunicarse con la placa escrita
+en Java y la página visible usada por el usuario en XHTML y CSS.
+
+Al desconocer CSS se presentaba una oportunidad de aprender sobre ese lenguaje.
+De nuevo requería dedicar cierto tiempo al estudio y aprendizaje hasta lograr
+una página con un aspecto aceptable.
+
+Al usuario se le muestran cuatro apartados. El primero le permite introducir la
+dirección IP y el puerto TCP mostrados por el LCD. En caso de existir varios SE
+se pueden cambiar estos parámetros para escoger el SE con el que interactuar.
+
+El siguiente bloque muestra un cuadrado por cada uno de los colores que se
+pueden generar con los LED RGB. Si lo que se desea es apagar los LED, pulsando
+el cuadrado negro se apagan todos.
+
+El tercer apartado permite introducir una cadena de texto que será enviada al
+LCD. Como la pantalla solo puede mostrar 16 caracteres los cuadros de texto
+están limitados a esta longitud. Se muestran dos cuadros, uno para cada línea
+del LCD.
+
+El último bloque está compuesto por cuatro controles deslizantes. Hay uno por
+LED de la placa de expansión. Usando estos controles se puede ajustar de forma
+visual la intensidad, yendo de 0\% a 100\% deslizando el control de izquierda
+a derecha.
+
+Como todo el contenido se muestra en una página era necesario modificar el
+comportamiento realizado tras pulsar los botones. Por defecto, al pulsar un
+botón la página se desplazaba hasta arriba. El inconveniente se solucionó
+inyectando código HTML en los botones para modificar su comportamiento.
+
+\section{Documentación}{\label{sec:documentacion}}
+En cuanto a la documentación, más allá de aprender a utilizar \LaTeX{} no se
+presentaron mayores inconvenientes. Aparecieron las dudas habituales que surgen
+cuando se está aprendiendo a usar nuevas herramientas o técnicas pero se fueron
+solventando a medida que fueron surgiendo.
+
+El uso de la plantilla facilitada por el tutor allanó la creación y edición de 
+los documentos de la memoria y anexos. Se realizaron pequeñas modificaciones a
+la plantilla con la intención de mejorar el resultado obtenido. 
+
+Uno de los cambios fue usar el paquete \emph{biblatex-iso690} para generar la
+bibliografía de acuerdo a la norma UNE-ISO 690:2013. Otra adición fue el
+paquete \emph{url} que se encarga de mejorar la forma en que se tratan las URL
+en el texto.

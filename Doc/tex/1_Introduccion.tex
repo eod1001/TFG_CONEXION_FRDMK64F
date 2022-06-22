@@ -1,32 +1,60 @@
 \capitulo{1}{Introducción}
 
-"Descripción del contenido del trabajo y del estructura de la memoria y del resto de materiales entregados."
+Los sistemas embebidos o empotrados (SE) están muy presentes en nuestra vida cotidiana. Podemos referirnos a estos sistemas como un microcontrolador, el cual se diferencia de los microcomputadores en el modo de realizar las diferentes tareas, como veremos en los siguientes párrafos. Teniendo en cuenta que el cometido de los SE es la realización de pequeñas tareas programadas por un desarrollador para un fin concreto encontramos que, por lo general, todos cuentan con las mismas características, tamaño reducido, bajo coste y bajo consumo. Además se les pueden añadir más componentes tales como sensores de humedad, calor, ultrasonidos y un largo etc, que dotarán de mayores funcionalidades a las placas. Algunos ejemplos de sistemas empotrados que podemos encontrar en nuestro día a día serían los electrodomésticos, relojes, coches, semáforos, entre otros. Todos estos aparatos junto con robots o máquinas industriales componen un campo importante para nuestra sociedad, ya que estos sistemas facilitan enormemente tareas pesadas o repetitivas en la vida de las personas. 
 
-sistemas embebidos
-comunicaciones
-conectividad wifi en nuestros días y explicación corta de la misma
-
-\section{Estructura de la Memoria}
-\subsection{Introducción}
-\subsection{Objetivos del Proyecto}
-\subsection{Conceptos Teóricos}
-\subsection{Técnicas y herramientas}
-\subsection{Apectos Relevantes del desarrollo}
-\subsection{Trabajos relacionados}
-\subsection{Conclusiones y lineas de trabajo futuras}
+Para que todos estos dispositivos puedan funcionar adecuadamente se necesitan o al menos se prefiere tener a estos sistemas interconectados entre si ya que a partir de la transferencia de datos pueden implementar aún más procesos, siempre con el objetivo de ser más eficiente a la hora de solucionar un problema.
 
 
-\section{Anexos}
-\subsection{Plan del proyecto software}
-\subsection{*}
-\subsection{*}
-\subsection{*}
-\subsection{*}
+Ahora que ya hemos visto su importancia y uso en la actualidad, veamos que son y cómo funcionan los sistemas empotrados en tiempo real. Para ello vamos a ver la diferencia entre un ordenador y un microcontrolador. La gran diferencia es una cuestión de escala. Un ordenador se suele utilizar para entornos complejos y tareas extensas que a su vez requieren de otras tareas en cascada. En cambio un microcontrolador se programa para llevar a cabo algunas tareas específicas, en un entorno controlado y generalmente pequeño. Un ejemplo para terminar de diferenciarlos seria, en el caso de querer medir la humedad y temperatura en una maceta usaríamos un microcontrolador programando esas dos tareas para que se ejecuten en tiempo real de forma cíclica, sería un desperdicio utilizar un microprocesador para esto.
+
+Cabe destacar como este tipo de sistemas brilla en una de las ultimas ramas de la informática como es el Internet de las cosas (IOT). Los SE son parte central de este nuevo mundo interconectado, en el cual todos nuestros aparatos electrónicos se comunican entre ellos mediante un hardware especifico y un software que cumple con tareas en tiempo real. Esta tecnología cada vez está más presente en nuestros hogares y sin duda es un gran avance hacia el bienestar de las personas.
 
 
-\section{Contenido Adjunto}
-*
-*
-*
+\section{Descripción del Trabajo Realizado}\label{sec:Descripcion}
 
+Antes de continuar, vamos a explicar en qué consiste este proyecto. La idea principal es disponer de una red de sistemas embebidos comunicados entre ellos mediante cable de red. Esta conexión será de tipo punto a punto. Dispondremos de tres placas FRDM-K64F. A una de ellas se le añadirá además un \extranjerismo{shield} de expansión que la dotará de más periféricos, de las cuales usaremos los 4 botones, las 4 luces led de cara a la interacción con el usuario, además de los potenciómetros y el sensor de temperatura. En el caso de las otras dos placas disponen de una pantalla LCD y además están conectadas a una placa controladora de unos motores. La idea principal del ejemplo de uso es que mediante los potenciómetros de la placa de expansión regulemos el giro de los motores. Esto lo podemos ver más detallado en los requisitos funcionales explicados en los anexos. Dispondremos también de un switch para poder enviar paquetes mediante el cable ethernet utilizando el protocolo TCP/IP.
 
+\imagen{proyecto}{Laboratorio del Proyecto}
+
+\section{Estructura de la Memoria}\label{sec:Estructura}
+
+La memoria de este proyecto está estructurada de la siguiente manera.
+
+\begin{description}
+	\item[Introducción:] Se explican los temas principales en los que se basa tanto la idea como el procedimiento y funcionalidad final del proyecto. En este apartado se dan unos conceptos básicos para que el lector pueda entender adecuadamente el objetivo del trabajo y como se ha desarrollado.
+
+	\item[Objetivos del Proyecto:] Se explican los objetivos del proyecto tanto generales, como técnicos y personales, que se esperan cumplir durante la realización del proyecto.
+
+	\item[Conceptos Teóricos:] Se tratan los conceptos teóricos más detalladamente. Conceptos como el protocolo TCP/IP, las conexiones en red, funcionamiento del wifi y el ethernet, etc.
+
+	\item[Técnicas y herramientas:] En este apartado se verán las herramientas utilizadas para llevar a cabo este proyecto, así como las técnicas para la correcta organización y gestión del trabajo.
+
+	\item[Aspectos Relevantes del desarrollo:] En este capítulo se mostrarán algunos conceptos e hitos importantes durante el desarrollo del trabajo.
+
+	\item[Trabajos relacionados:] Se mostrarán algunos ejemplos de uso real en la actualidad, que utilizan sistemas empotrados para su desarrollo
+
+	\item[Conclusiones y líneas de trabajo futuras:] Se mencionarán algunas propuestas sobre hacia donde podría evolucionar el trabajo expuesto en esta memoria y a que conclusiones se ha llegado tras haber completado el objetivo del trabajo.
+\end{description}
+
+\section{Anexos}\label{sec:anexos}
+
+Se añade información en forma de anexos a la ya presentada en la memoria que ayudarán a la comprensión de la misma y a conocer el funcionamiento del resultado del proyecto.
+\begin{description}
+	\item[Plan del proyecto software:] Se muestra la planificación temporal y la viabilidad del proyecto dividida en dos partes, legal y económica.
+
+	\item[Especificación de requisitos del software:] Se expone un catálogo de requisitos para la utilización de este sistema en un entorno real. Este catálogo viene con la definición de cada una de sus partes.
+
+	\item[Especificación de diseño:] Exposición de la fase de diseño, el plan procedimental y el diseño arquitectónico de las placas y sensores que componen el sistema.
+
+	\item[Manual del programador:] Explicación de aquellos conocimientos e ideas que un programador debería conocer para poder entender y seguir desarrollando el código fuente.
+
+	\item[Manual de usuario:] Contiene una explicación sobre el debido uso y pasos a seguir para que un usuario pueda utilizar adecuadamente el software.
+\end{description}
+
+\section{Contenido adjunto}\label{sec:Contenido adjunto}
+\begin{enumerate}
+\item Software para las placas "Shield" y "Placa motor A" y "Placa motor B".
+\item Laboratorio compuesto por dos motores y su placa controladora, una pantalla lcd, tres placas k64f y una placa de expansión.
+\item Repositorio de GitHub \cite{EOD1001} con todo el contenido de desarrollador
+\item Software documentado.
+\end{enumerate}

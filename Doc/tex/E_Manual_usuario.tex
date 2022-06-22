@@ -1,11 +1,43 @@
 \apendice{Documentación de usuario}
 
 \section{Introducción}
+Esta sección recoge las instrucciones y conocimientos tecnicos que un usuario debe conocer para poder utilizar el laboratorio presentado.
+Veremos como instalar el software en nuestra placa y como controlar la placa maestro. Se explicaran que funciones realizan cada boton y cuales son los usos que tiene el laboratorio.
 
 \section{Requisitos de usuarios}
 
-\section{Instalación}
+Para poder utilizar el programa lo primero es disponer de todas las piezas que componen el laboratorio.
+Deberemos comprobar que todos los componentes están correctamente conectados entre si. Para ello deberemos:
+\begin{enumerate}
+\item Disponer de tres cables de red y conectar cada uno de ellos a una placa y a un switch.
+\item Comprobar que los motores están correctamente conectados a la placa controladora y que las placas FRDM k64F también están conectadas a la placa controladora de los motores. Es importante cerciorarnos de que todos los pines están debidamente conectados a su posición  correspondiente
+\item Tendremos que asegurarnos que todos los componentes están conectados a una toma de corriente y reciben energía, por lo general si están recibiendo corriente tendrán algún led encendido.
+\item También deberemos comprobar que el switch cumple con su función mirando si todos los puertos donde se conectan los cables de red están recibiendo y enviando datos
+\item Se deberá conectar la placa de expansion a la placa maestro, en este caso es muy sencillo porque solo existe una forma de conectarla para que todos los pines queden conectados.
+\item Por ultimo deberemos conectar los pines de la pantalla lcd a una de las placas maestro para poder ver de manera adecuada la información de los comandos recibidos.
+\end{enumerate}
+
+Tras tener configurado el entorno el siguiente paso sera cargar el programa correspondiente a cada micrcontrolador. Recordemos que disponemos de tres placas y tres softwares con algunas diferencias entre ellos. En el apéndice anterior ya vimos como podíamos realizar este procedimiento.
+Una vez se tienen los códigos cargados en las placas deberemos esperar a que los tres microcontroladores adquieran su respectiva dirección ip y podremos comenzar a enviar comandos desde la placa maestro como veremos en el siguiente apartado.
+
+
 
 \section{Manual del usuario}
+En el apéndice /// pudimos ver en los requisitos funcionales todos los usos de la placa y sus correspondientes pasos. En este apartado veremos de una forma mas gráfica las utilidades de la misma.
+
+En primer lugar vamos a visualizar y nombrar los botones de la placa maestro.
+
+%\imagen{placaMaestroBotones}{Botones de la placa maestro}
+
+\begin{description}
+\item Para configurar la velocidad del motor A deberemos mover el potenciometro de la placa según la velocidad (sentido del giro) que le queramos. Si lo giramos hacia la derecha completamente el motor recibirá el valor 255 y girará hacia la derecha, si por el contrario lo giramos hacia la izquierda recibirá el valor de 0 y girara en el sentido opuesto. En caso de que dejemos el potenciometro en un rango medio de su giro, el motor recibirá el dígito 128 y dejara el motor parado. 
+\item Lo mismo pasa con el potenciometro 2 y el botón 2. En ambos casos, al pulsar el boton 1 o dos, recibiremos un \extranjerismo{feedback} en la placa esclavo mediante un mensaje en la pantalla que nos mostrara si se recibió el comando o no.
+\item En caso de que queramos parar ambos motores utilizaremos el botón 3 a modo de parada de emergencia. 
+El botón 4 envía a la placa maestro la temperatura ambiente. Esta temperatura se muestra en ºC por la pantalla del esclavo. 
+\item Por ultimo los botones 5 y 6 muestran la velocidad de los motores A y B respectivamente, esta información se mostrara por la pantalla de la placa esclavo.
+Es importante conocer que en muchos casos las primeras lecturas tanto de los potenciometros como del sensor de temperatura no le ha dado tiempo a leer la nueva posición y se debe repetir la acción para mandar el comando.
+\end{description}
+
+////////////////FOTOS
 
 

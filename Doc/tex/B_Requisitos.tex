@@ -2,10 +2,213 @@
 
 \section{Introducción}
 
-\section{Objetivos generales}
+En este apéndice se exponen los requisitos del software creado y la funcionalidad de este. Para ello se da un descripción completa de las funciones que debe realizar el programa y de como un usuario podría utilizarlo. Se definen los pasos y opciones para utilizar correctamente el hardware del sistema empotrado y que cumpla así, con su función. Por otro lado, se definen también se definen los requisitos no funcionales. 
+Para la exposición de las siguientes secciones se utilizaran, por motivo de simplicidad, algunas abreviaciones:
+\begin{description}
+\item[Sistema empotrado o embebido:] SE
+\item[Software del sistema empotrado:] SW del SE
+\item[Requisito de interfaces externas:] RE
+\item[Requisito funciona:] RF
+\item[Requisito no funcional:] RNF
+\item[Casos de Uso:] CU
+\end{description}
+
+\subsection{Objetivos generales}
+En esta seccion vamos a ver el funcionamiento del SE:
+\begin{itemize}
+\item 
+\end{itemize}
+
+\subsection{Clases de usuario y características}
+Para la utilización del sistema empotrado no se necesita ningún tipo de conocimiento técnico por lo que cualquier persona interesada puede usarlo sin problemas. La mayor dificultad radica en haber conectado todos los componentes en red y conocer los casos de uso y los pasos para utilizar la placa maestro. 
+Ya que junto con el software se proporciona la memoria que describe el desarrollo,
+además de varios apéndices con información complementaria el usuario podrá ser conocedor del correcto funcionamiento del SE. En concreto, los usuarios pueden consultar el apéndice con el manual de usuario que cuenta con indicaciones para el uso del software.
 
 \section{Catalogo de requisitos}
+\subsection{Requisitos externos}
+\begin{itemize}
+  	
+	\item \textbf{RE-2 Acceso a la red} El SE tiene que ser capaz de usar Ethernet. RE de alta prioridad.
+	\item \textbf{RE-3 Transmisiones en red} El SE tiene que ser capaz de usar TCP/IP. RE de alta prioridad.
+	\item \textbf{RE-3 Uso de Botones} Los seis botones que utiliza la placa mas el shield deben poderse utilizar correctamente.  RE de alta prioridad.
+	\item \textbf{RE-4 Uso de dispositivos ADC} Tanto el sensor de temperatura como los potenciómetros deben realizar adecuadamente sus lecturas. RE de alta prioridad
+	\item \textbf{RE-5 Comunicaciones con periféricos} Las comunicaciones I2C y uart se deben de poder utilizar RE de alta prioridad.
+\end{itemize}
+
+\subsection{Requisitos Funcionales}
+\begin{itemize}
+  	\item \textbf{RF-1 Recepción de comandos} El SE tiene que recibir comandos transmitidos mediante paquetes TCP con destino a su correspondiente dirección IP y puerto TCP abierto. RF de alta prioridad.
+  	\item \textbf{RF-2 Identificación de comandos} El SE tiene que se capaz de identificar los comandos recibidos para poder ejecutar las acciones correctas. RF de alta prioridad
+  	\item \textbf{RF-3 Movimiento de los motores}
+  	\item \textbf{RF-4 Obtención de la velocidad de los motores}
+  	\item \textbf{RF-5 Obtención de la temperatura} 
+  	\item \textbf{RF-6 Envío de comandos}
+  	\item \textbf{RF-7 Parada de ambos motores}
+\end{itemize}
+
+\subsection{Requisitos No Funcionales}
+\begin{itemize}
+  	\item \textbf{RNF-1 hardware del SE} El SE tiene que ser desarrollado con una placa de desarrollo FRDM-K64F. RNF de alta prioridad.
+  	\item \textbf{RNF-2 Rendimiento del SE} El SE tiene que ser capaz de realizar las acciones indicadas por el usuario sin demora. RNF de media prioridad.
+  	\item \textbf{RNF-3 Seguridad del SE} El SE tiene que asegurar que sus componentes no presentan riesgos eléctricos al usuario. RNF de alta prioridad. 
+  	\item \textbf{RNF-4 Calidad del SW} El SW tiene que garantizar cierto nivel de calidad, tales como incluir comentarios que faciliten su comprensión para un mantenimiento o portabilidad posteriores. RNF de media prioridad.
+  	\item \textbf{RNF-5 Usabilidad del SE} La utilizacion del sistema
+  	\item \textbf{}
+\end{itemize}
+
+
 
 \section{Especificación de requisitos}
+
+\subsection{Diagrama de Casos de Uso}
+
+\subsection{Casos de Uso}
+
+\tablaSmallSinColores{CU-1 Seleccionar SE}{l l}{cu-1}
+{\multicolumn{1}{l}
+{CU-1}                          & Seleccionar SE \\}
+{ 
+  \textbf{Versión}              & 1.0     \\
+  \textbf{Fecha}                & 2022-06 \\
+  \textbf{Requisitos asociados} & RF-3   \\
+  \textbf{Descripción}          & Fijar la velocidad del Motor A\\ 
+  \textbf{Precondición}         & Se debe tener conexión en red entre las placas \\
+                                & Todos los elementos del sistema deben estar conectados\\
+  \textbf{Acciones}             & \parbox{.5\textwidth}{\begin{enumerate}
+    \item El usuario ajusta el potenciómetro 1 según sus necesidades.                         
+    \item El usuario pulsa el botón 1 para enviar el comando.
+    \item Se corrobora mediante la pantalla LCD y los leds de la placa maestro que se ha enviado el comando.
+  \end{enumerate}}\\
+  \textbf{Postcondición}        & El motor comienza a moverse\\
+  \textbf{Excepciones}          & \parbox{.5\textwidth}{\begin{itemize}
+    \item Si alguno de los elementos del sistema no esta bien conectado o no se dispone de corriente no funcionará  
+    \item La lectura del potenciómetro puede no realizarse bien en algunas ocasiones.
+  \end{itemize}}\\
+  \textbf{Importancia}          & Alta    \\
+  \textbf{Comentarios}          & Los cuatro leds de la placa shield se iran encendiendo\\
+				 & a medida que avance el envio del comando \\
+}
+
+
+\tablaSmallSinColores{CU-2 Seleccionar SE}{l l}{cu-2}
+{\multicolumn{1}{l}
+{CU-2}                          & Seleccionar SE \\}
+{ 
+  \textbf{Versión}              & 1.0     \\
+  \textbf{Fecha}                & 2022-06 \\
+  \textbf{Requisitos asociados} & RF-3   \\
+  \textbf{Descripción}          & Fijar la velocidad del Motor B\\ 
+  \textbf{Precondición}         & Se debe tener conexión en red entre las placas \\
+                                & Todos los elementos del sistema deben estar conectados\\
+  \textbf{Acciones}             & \parbox{.5\textwidth}{\begin{enumerate}
+    \item El usuario ajusta el potenciómetro 2 según sus necesidades.                         
+    \item El usuario pulsa el botón 2 para enviar el comando.
+    \item Se corrobora mediante la pantalla LCD y los leds de la placa maestro que se ha enviado el comando.
+  \end{enumerate}}\\
+  \textbf{Postcondición}        & El motor comienza a moverse\\
+  \textbf{Excepciones}          & \parbox{.5\textwidth}{\begin{itemize}
+    \item Si alguno de los elementos del sistema no esta bien conectado o no se dispone de corriente no funcionará  
+    \item La lectura del potenciómetro puede no realizarse bien en algunas ocasiones.
+  \end{itemize}}\\
+  \textbf{Importancia}          & Alta    \\
+  \textbf{Comentarios}          & Los cuatro leds de la placa shield se iran encendiendo\\
+				  & a medida que avance el envio del comando \\
+
+}
+
+
+
+\tablaSmallSinColores{CU-3 Seleccionar SE}{l l}{cu-3}
+{\multicolumn{1}{l}
+{CU-3}                          & Seleccionar SE \\}
+{ 
+  \textbf{Versión}              & 1.0     \\
+  \textbf{Fecha}                & 2022-06 \\
+  \textbf{Requisitos asociados} & RF-7   \\
+  \textbf{Descripción}          & Parada de emergencia de ambos motores\\ 
+  \textbf{Precondición}         & Se debe tener conexión en red entre las placas \\
+                                & Todos los elementos del sistema deben estar conectados\\
+  \textbf{Acciones}             & \parbox{.5\textwidth}{\begin{enumerate}
+    \item El usuario pulsa el botón 3 para enviar el comando.
+    \item Se corrobora mediante la pantalla LCD y los leds de la placa maestro que se ha enviado el comando.
+  \end{enumerate}}\\
+  \textbf{Postcondición}        & Ambos motores se paran\\
+  \textbf{Excepciones}          & \parbox{.5\textwidth}{\begin{itemize}
+    \item Si alguno de los elementos del sistema no está bien conectado o no se dispone de corriente no funcionará  
+    \item La lectura del potenciómetro puede no realizarse bien en algunas ocasiones.
+  \end{itemize}}\\
+  \textbf{Importancia}          & Alta    \\
+  \textbf{Comentarios}          & Los cuatro leds de la placa shield se encenderán a la vez\\
+
+} 
+\tablaSmallSinColores{CU-4 Seleccionar SE}{l l}{cu-4}
+{\multicolumn{1}{l}
+{CU-4}                          & Seleccionar SE \\}
+{ 
+  \textbf{Versión}              & 1.0     \\
+  \textbf{Fecha}                & 2022-06 \\
+  \textbf{Requisitos asociados} & RF-5    \\
+  \textbf{Descripción}          & El usuario solicita la temperatura ambiente \\
+     \textbf{Precondición}        		   & Se debe tener conexión en red entre las placas \\
+                                & Todos los elementos del sistema deben estar conectados\\
+  \textbf{Acciones}             & \parbox{.5\textwidth}{\begin{enumerate}
+    \item El usuario pulsa el botón 4.
+      \item Se corrobora mediante la pantalla LCD y los leds de la placa maestro que se ha enviado el comando.
+
+  \end{enumerate}}\\
+  \textbf{Postcondición}        & La temperatura se muestra en la pantalla de la placa esclavo 1\\
+  \textbf{Excepciones}          & \parbox{.5\textwidth}{\begin{itemize}
+    \item Si alguno de los elementos del sistema no está bien conectado o no se dispone de corriente no funcionará  
+  \item Las dos primeras lectura del sensor de temperatura son de calibración.
+  \end{itemize}}\\
+  \textbf{Importancia}          & Alta    \\
+     \textbf{Comentarios}       & Los cuatro leds de la placa shield se encenderán a la vez\\
+
+} 
+\tablaSmallSinColores{CU-5 Seleccionar SE}{l l}{cu-5}
+{\multicolumn{1}{l}
+{CU-5}                          & Seleccionar SE \\}
+{ 
+  \textbf{Versión}              & 1.0     \\
+  \textbf{Fecha}                & 2022-06 \\
+  \textbf{Requisitos asociados} & RF-4   \\
+  \textbf{Descripción}          & Obtener velocidad del Motor A\\ 
+  \textbf{Precondición}         & Se debe tener conexión en red entre las placas \\
+                                & Todos los elementos del sistema deben estar conectados\\
+  \textbf{Acciones}             & \parbox{.5\textwidth}{\begin{enumerate} 
+    \item El usuario pulsa el botón 5 para enviar el comando.
+    \item Se corrobora mediante la pantalla LCD y los leds de la placa maestro que se ha enviado el comando.
+  \end{enumerate}}\\
+  \textbf{Postcondición}        & Se muestra por la pantalla LCD la velocidad del motor A\\
+  \textbf{Excepciones}          & \parbox{.5\textwidth}{\begin{itemize}
+    \item Si alguno de los elementos del sistema no está bien conectado o no se dispone de corriente no funcionará  
+  \end{itemize}}\\
+  \textbf{Importancia}          & Alta    \\
+  \textbf{Comentarios}          & Los cuatro leds de la placa shield se encenderán al mismo tiempo\\
+
+}
+ 
+\tablaSmallSinColores{CU-6 Seleccionar SE}{l l}{cu-6}
+{\multicolumn{1}{l}
+{CU-6}                          & Seleccionar SE \\}
+{ 
+  \textbf{Versión}              & 1.0     \\
+  \textbf{Fecha}                & 2022-06 \\
+  \textbf{Requisitos asociados} & RF-4   \\
+  \textbf{Descripción}          & Obtener velocidad del Motor B\\ 
+  \textbf{Precondición}         & Se debe tener conexión en red entre las placas \\
+                                & Todos los elementos del sistema deben estar conectados\\
+  \textbf{Acciones}             & \parbox{.5\textwidth}{\begin{enumerate} 
+    \item El usuario pulsa el botón 6 para enviar el comando.
+    \item Se corrobora mediante la pantalla LCD y los leds de la placa maestro que se ha enviado el comando.
+  \end{enumerate}}\\
+  \textbf{Postcondición}        & Se muestra por la pantalla LCD la velocidad del motor B\\
+  \textbf{Excepciones}          & \parbox{.5\textwidth}{\begin{itemize}
+    \item Si alguno de los elementos del sistema no está bien conectado o no se dispone de corriente no funcionará  
+  \end{itemize}}\\
+  \textbf{Importancia}          & Alta    \\
+  \textbf{Comentarios}          & Los cuatro leds de la placa shield se encenderán al mismo tiempo\\
+
+}
 
 

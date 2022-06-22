@@ -1,35 +1,194 @@
 \capitulo{4}{Técnicas y herramientas}
 
-""Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
-No se pretende que este apartado se convierta en un capítulo de un libro dedicado a cada una de las alternativas, sino comentar los aspectos más destacados de cada opción, con un repaso somero a los fundamentos esenciales y referencias bibliográficas para que el lector pueda ampliar su conocimiento sobre el tema.""
+En este capítulo se exponen todas las herramientas que se han utilizado y las técnicas que se han seguido para poder desarrollar el proyecto de una manera sencilla y organizada. 
 
-\section{Metodologias Agiles}
+\section{Técnicas: Metodologías Ágiles}\label{sec:HMetodologiasAgiles}
+Como metodología ágil para el desarrollo y organización del proyecto elegí la metodología SCRUM ya que además de ser la más usada en el entorno laboral real, ha sido una de las que hemos trabajado durante las asignaturas del grado. Pero para poder entender su potencial veamos que es SCRUM:
 
-\section{Herramientas Hardware}
+Scrum es un proceso en el que se aplican un conjunto de buenas prácticas que permiten trabajar de forma colaborativa y organizada mediante el uso de Sprints y tareas. El desarrollo de todo el proyecto se separa en diferentes Sprints, que contienen una serie de tareas necesarias para conseguir un software final. Cada uno de los Sprints debe ser completado en unas 3 semanas por lo que en la reunión inicial se deben discutir que tareas estarán en el sprint actual. El equipo deberá valorar la dificultad y el tiempo de cada una de las tareas y tratar de realizar la mayoría de las tareas posibles en ese sprint. En la finalización de cada sprint se deberá entregar un resultado válido. En la metodología Scrum es de gran importancia la comunicación con el resto del equipo, por lo que al final de cada día se realiza una reunión de unos 15 minutos en la que se exponen problemas, avances y dificultades.
 
-K64F
-ESP8266
-PLACA DE EXPANSION ARDUINO BASIC I/O
 
-\section{Herramientas Software}
+\imagen{scrum}{Diagrama resumen de la Metodología SCRUM}
 
-kds IDE
-MCUEXPRESSO IDE
-DOCKLIGTH
-TERMITE
+Aún  nos queda por hablar sobre las figuras más importantes de esta metodología:
+\begin{description}
+\item[El Product Owner] Es el encargado de hablar con el cliente y exponer sus peticiones al scrum manager y al equipo de desarrollo. En otras palabras es quien define las tareas, condiciones y prioridades del proyecto centrándose en el ROI del proyecto.
+\item[El Scrum Master] Es quien dirige y lidera al scrum team. Es el encargado de guiar al equipo y hacer que se cumplan las normas de la metodología scrum. Esta figura está muy ligada al product owner ayudándole a maximizar el ROI.
+\item[El Scrum team] Es el equipo desarrollador del software del proyecto. Suele estar formado por grupos de entre 3 y 9 personas que deben tener buenas capacidades referidas a la organización y gestión de tareas y procesos.
+\end{description}
 
-\section{Herramientas de DOCUMENTACION}
-TEX
-TEXMAKER
-WORD
+Partiendo de los actores anteriores podemos definir que, tanto el cargo de Product Owner y Scrum Team han sido interpretados por mí, a diferencia de la figura de Scrum Master la habrían representado mis cotutores.
 
-\section{Herramientas DE COMUNICACION}
-EMAIL
-TEAMS
+Todo esto nos ayuda a poder lograr un resultado final optimo en el desarrollo de proyectos complejos donde se necesita obtener resultados en un corto margen de tiempo y donde las tareas pueden variar. Se usa en entornos complejos donde prima la competitividad, la flexibilidad y la productividad.
 
-\section{Herramientas de GESTION de PROYECTOS}
 
-GITHUB
-TRELLO
+\section{Herramientas Hardware}\label{sec:HHardware}
+
+Veamos con más detalle los componentes hardware de este proyecto.
+
+\subsection{Placa FRDM K64F}
+Esta placa es un conjunto hardware que, además de contener el microcontrolador, nos ofrece las características necesarias para poder conectar infinidad de periféricos a este controlador.
+Veamos las características de la placa FRDM K64F:
+\begin{itemize}
+\item[MK64FN1M0VLL12 MCU] (120 MHz, 1 MB de memoria flash, 256 KB RAM, USB de bajo consumo, sin cristal, y 100 Low profile Quad Flat (LQFP))
+\item Interfaz USB de doble función con conector USB micro-B
+\item LED RGB
+\item Acelerómetro y magnetómetro FXOS8700CQ
+\item Dos botones de usuario
+\item Opción de alimentación flexible - OpenSDAv2 USB, Kinetis K64 USB y fuente externa
+\item Fácil acceso a la entrada/salida del MCU a través de Arduino™ R3 compatible Conectores de E/S
+\item Circuito de depuración programable OpenSDAv2 compatible con el software CMSISDAP Interface que proporciona:
+\begin{itemize}
+\item Interfaz de programación flash del dispositivo de almacenamiento masivo (MSD)
+\item Interfaz de depuración CMSIS-DAP a través de una conexión USB HID sin controlador proporcionando depuración de control de ejecución y compatibilidad con herramientas IDE
+\item Interfaz de puerto serie virtual
+\item Proyecto de software CMSIS-DAP de código abierto
+\item Ethernet
+\item SDHC
+\item Módulo RF adicional: nRF24L01+ Nordic 2.4GHz Radio
+\item Módulo Bluetooth adicional: JY-MCU BT board V1.05 BT
+\end{itemize}
+\end{itemize}
+ 
+
+Además de todo esto también se le puede añadir placas de expansión. Como veremos en el siguiente apartado nosotros hemos utilizado la ARDUINO BASIC I/O.
+
+\subsection{Placa de expansion Arduino Basic I/O}
+
+Esta placa se sitúa sobre la placa K64F dotándola de varias características, como por ejemplo:
+altavoz, 4 leds de diferentes colores, 4 botones, sensor de infrarrojos, 2 potenciómetros, entre otros. De esta manera se consigue dotar a la placa de más funciones.
+
+\subsection{LCD}
+Tanto para el desarrollador como sobre todo para el cliente final que recibe el proyecto es interesante el uso de una pantalla que muestre información sobre las operaciones que está realizando el sistema empotrado. En este proyecto se ha utilizado una pantalla de 2 líneas de 16 caracteres cada línea. Por lo general, estas pantallas necesitan de la conexión de más de 15 pines para la transmisión de datos, la alimentación, la iluminación y el control de la transmisión. Sin embargo en este caso esta pantalla incorpora un módulo que deja la conexión en tan solo 4 pines que serían:
+\begin{itemize}
+\item[\textbf{SCL}] (\extranjerismo{System Clock}) es la línea de los pulsos de reloj que sincronizan el sistema. 
+\item[\textbf{SDA}] (System Data) es la línea por la que se mueven los datos entre los dispositivos.
+\item[\textbf{VCC}] Es el pin por el que reciben energía. En este caso serán 5 voltios.
+\item[\textbf{GND}] Es el pin de tierra o masa que sirve para cerrar el circuito.
+\end{itemize}
+La comunicación utilizada en este tipo de elementos es I2C.
+
+
+\subsection{Motores}   
+El motor recibe el nombre de EMG30 (codificador, motor, reductor 30:1) es un motor de 12v totalmente equipado con codificadores y un reductor 30:1. Es ideal para aplicaciones robóticas pequeñas o medianas. También incluye un condensador de supresión de ruido estándar en el motor. Las conexiones del motor son:
+
+\begin{enumerate}
+\item Purple (1) Hall Sensor B Vout
+\item Blue (2) Hall sensor A Vout
+\item Green (3) Hall sensor ground
+\item Brown (4) Hall sensor Vcc
+\item Red (5) + Motor
+\item Black (6) - Motor
+\end{enumerate}
+
+Estas conexiones van conectadas a una  placa que será la encargada de controlar los bytes recibidos y enviados.
+
+\imagen{placaMotor}{Placa controladora de los motores}
+
+La placa K64F envía a través de conexión UART los bytes con las instrucciones para los motores a la placa controladora y posteriormente esta placa enviará la información al propio motor que realizará las acciones correspondientes a ese comando. 
+La placa de los motores puede recibir y transmitir mediante comunicación UART o I2C. Por otro lado los bytes enviados consisten, en la mayoría de las instrucciones, en un byte de sincronización, un byte para elegir el motor puesto que hay dos motores, y el byte con la instrucción. Estos bytes se pueden enviar tanto en formato hexadecimal como decimal u octal.
+Vamos a ver los modos y comandos que se pueden utilizar con estos motores.
+En cuanto a los modos disponemos de 4 modos:
+\begin{description}
+\item[Modo 0] Si se elegimos usar el modo 0 entonces los registros de velocidad son velocidades literales en el rango de 0 (retroceso total)
+128 (parada) 255 (avance total).
+\item[Modo 1] El modo 1 es similar al modo 0, excepto que los valores de velocidad se interpretan como valores con signo. El rango es -128
+(retroceso total) 0 (parada) 127 (avance total).
+\item[Modo 2] En el modo 2 la velocidad1 controle la velocidad de ambos motores, y la velocidad2 se convierte en el valor de giro. Los datos están en el rango de 0 (retroceso total) 128 (parada) 255 (avance total).
+\item[Modo 3] El modo 3 es similar al modo 2, excepto que los valores de velocidad se interpretan como valores con signo. Los datos están en el rango de -128 (retroceso total) 0 (parada) 127 (avance total)
+\end{description}
+
+En cuanto a los comandos voy a explicar los más interesantes:
+\tablaSmallSinColores{Comandos Motores MD25}{l c c c}{personal}
+{\multicolumn{1}{c}{ CMD } & Nombre & Bytes Send-Recv & Descripción\\}
+{
+0x21 & Get Speed 1 & 2 - 1 & Devuelve la velocidad del motor 1 \\
+0x22 & Get Speed 1 & 2 - 1 & Devuelve la velocidad del motor 2\\
+0x2A & Get Acceleration & 2 - 1 & Devuelve la aceleración\\
+0x31 & Set Speed 1 & 3 - 0 & Fija la velocidad del motor 1 \\
+0x32 & Set Speed 1 & 3 - 0 & Fija la velocidad del motor 2\\
+0x33 & Set Acceleration & 3 - 0 & Fija la aceleración\\
+0x34 & Set Mode & 3 - 0 & Fija el modo\\ 
+0x38 & Disable TimeOut & 2 - 0 & No apagarse tras 2s sin comunicación\\
+0x39 & Enable TimeOut & 2 - 0 & Apagarse tras 2s sin comunicación\\
+}
+
+\section{Herramientas Software}\label{sec:HSoftware}
+
+Veamos que herramientas software he utilizado a lo largo del desarrollo del proyecto.
+
+\begin{description}
+\item[KDS IDE]
+Kinetis ® Design Studio (KDS) es un entorno de desarrollo integrado complementario para los MCU Kinetis que permite una edición, compilación y depuración sólidas de sus diseños. Basado en software gratuito de código abierto que incluye Eclipse, GNU Compiler Collection (GCC), GNU Debugger (GDB) y otros, Kinetis Design Studio IDE ofrece a los diseñadores una herramienta de desarrollo simple sin limitaciones de tamaño de código. Además, el software Processor Expert ® habilita su diseño con su base de conocimiento y ayuda a crear aplicaciones potentes con unos pocos clics.
+Este fue el IDE sobre el que empecé el proyecto y del que tras un par de semanas terminaría migrando a MCUXPRESSO 
+Entorno multiplataforma basado en software libre como Eclipse IDE o GNU Compiler Collection (GCC). Incorpora Processor Expert, una utilidad que permite añadir y configurar los componentes necesarios para un proyecto.
+
+
+\item[MCUXpresso IDE]
+Este IDE está basado en eclipse y sobre el que se ha desarrollado el proyecto. 
+El IDE de MCUXpresso ofrece funciones avanzadas de edición, compilación y depuración con la adición de vistas de depuración específicas de MCU, rastreo y creación de perfiles de código, depuración multinúcleo y herramientas de configuración integradas.
+
+\item[Dockligth]
+Docklight es una herramienta de prueba, análisis y simulación para protocolos de comunicación en serie.
+Este programa se utiliza para captar las comunicaciones serie y Uart. En este proyecto se ha utilizado para poder comunicarnos con la placa de una manera más sencilla a la hora de tener que introducir comandos. Para la captura de estos mensajes es necesario conocer el puerto de salida 'comm' y la velocidad en baudios a la que se transmiten los datos, además del número de bits, paridad, etc.
+Por otro lado este software cuenta con algunas características añadidas como poder guardar comandos para utilizarlos de una forma más continua o poder ver la información en ascii binario o hexadecimal que en algunas ocasiones puede ser necesario.
+
+\item[Termite]
+Este software es muy parecido a Docklight pero en este caso cuenta con una interacción con el usuario más simple. En este caso el programa se configura y se reciben o envían datos.
+
+\item[Packet Sender]
+Este programa ha sido de gran ayuda puesto que se utilizó para realizar las pruebas de recepción y envío de paquetes por la placa. 
+Packet Sender es una utilidad de código abierto que permite enviar y recibir paquetes TCP y UDP. También admite conexiones TCP mediante SSL, generación de tráfico intenso, solicitudes HTTP GET/POST y generación de paneles.
+\end{description}
+
+\subsection{Otras Herramientas}
+
+\begin{description}
+\item[FreeRTOS]
+RTOS encargado de planificar la ejecución de las tareas del SE.
+En función la configuración establecidas y de las prioridades asignadas, una tarea prioritaria será capaz de detener la ejecución del resto. El RTOS también se puede encargar del envío de mensajes entre tareas, mediante mensajes directos, colas o buzones.
+\item[lwIP]
+Implementación liviana de la pila de protocolos TCP/IP. Permite a la placa utilizar la mayoría de los protocolos habituales: IPv4, IPv6, TCP, UDP, ICMP, IGMP... Estas herramientas se han utilizado por su conocimiento previo más que por un exhaustivo examen de todas las alternativas existentes.
+\end{description}
+
+
+\section{Herramientas de Documentación}\label{sec:HDocumentacion}
+Veamos las herramientas utilizadas para documentar y trabajar sobre el proyecto.
+
+\begin{description}
+\item[Texmaker]
+Es una herramienta gratuita que nos ayuda a escribir documentos de texto integrando las funciones necesarias para poder realizar documentos con Latex. Además este software es multiplataforma.
+\item[Latex]
+Latex es un compositor de textos destinado a la creación de documentos profesionales que requieran una alta calidad tipográfica. Se utiliza, por lo general, en la realización de artículos y libros científicos que incluyen elementos y expresiones matemáticas.
+\item[Bibtex]
+Es una herramienta utilizada para la creación de referencias bibliográficas. Genera un formato para cada una de las referencias con los datos aportados por el usuario y generalmente se utiliza en la realización de documentos con LaTeX.
+\end{description}
+
+\section{Herramientas de Comunicación}\label{sec:HComunicacion}
+Para la comunicación con mis tutores para aclarar dudas y resolver fallos se han utilizado las siguientes herramientas.
+
+\begin{description}
+\item[Microsoft Outlook] Es un gestor de correo electrónico desarrollado por Microsoft y que podemos encontrar en la suite de Microsoft office.
+
+\item[Microsoft Teams] De nuevo es un programa desarrollado por Microsoft. En este caso se trata de una plataforma para realizar reuniones virtuales, cuenta también con salas de chat y la posibilidad de generar documentos compartidos.
+\end{description}
+
+
+\section{Herramientas de Gestión de Proyectos}\label{sec:HGestionProyectos}
+En el primer apartado hablábamos de la técnica de organización y desarrollo de proyectos median metodologías ágiles: SCRUM, bien pues en este apartado veremos cuales son las herramientas con las que conseguimos facilitar estas tareas.
+
+\begin{description}
+\item[GitHub]
+GitHub es una plataforma pensada para que los desarrolladores puedan alojar su repositorios de código de forma segura en la nube. Además incluye un sistema de control de versiones conocido como Git. Por otro lado también permite el desarrollo colaborativo entre distintos desarrolladores y ofrece todas las herramientas para poder trabajar con SCRUM. 
+
+\item[GitKraken]
+GitKraken es una aplicación que nos permite manejar Git y por tanto nuestros archivos de GitHub de forma más sencilla. Esta herramienta se encuentra disponible para todas las plataformas.
+\end{description}
+
+
+
+
+
+
 
 

@@ -26,3 +26,66 @@ César Ignacio García Osorio, Álvar Arnaiz Gonzalez, José Francisco Díez Pas
 Álvaro López Cantero, Roberto Izquierdo Amo, David Miguel Lozano.
 
 
+
+
+https://web.unican.es/noticias/Paginas/2021/septiembre_2021/Harbour-digitalizacion-sistemas-embebidos.aspx
+
+
+https://www.avast.com/es-es/c-what-is-tcp-ip
+
+
+https://programarfacil.com/podcast/esp8266-wifi-coste-arduino/
+
+https://www.electrosoftcloud.com/esp-now-conecta-dos-o-mas-esp32-
+esp8266/
+
+
+https://www.freertos.org/
+
+
+https://es.acervolima.com/diferencia-entre-usarty-uart/ 
+
+https://manualdelatex.com/tutoriales/tablas
+
+
+https://como-funciona.co/un-potenciometro/
+
+
+https://proyectoarduino.com/sensor-de-temperatura/Quees-
+un-sensor-de-temperatura
+
+https://www.solerpalau.com/eses/blog/sensor-temperatura/
+
+
+https://www.nxp.com/design/designs/design-studio-integrated-development-environment-ide
+
+
+https://docklight.de/
+
+
+https://es.wikipedia.org/wiki/Texmaker: :text=TexmakerTexmaker
+
+https://es.wikipedia.org/wiki/LaTeX
+
+
+https://en.wikipedia.org/wiki/Mendeley
+
+
+
+https://www.xataka.com/basics/que-github-que-que-le-ofrece-a-desarrolladores
+
+
+https://alexmarket.medium.com/gitkraken-ea27eb8e8301: :text=GitKraken
+
+
+https://www.testdevelocidad.es/2017/06/06/wifi-vs-cable/
+
+
+https://es.altapps.net/soft/embos
+
+
+https://www.iebschool.com/blog/que-son-metodologias-agiles-agile-scrum/
+
+
+
+

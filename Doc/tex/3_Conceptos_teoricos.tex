@@ -1,119 +1,201 @@
 \capitulo{3}{Conceptos teóricos}
 
-En esta sección se detallaran los conceptos teóricos necesarios para el desarrollo del proyecto. 
+En esta sección se detallarán los conceptos teóricos necesarios para comprender el desarrollo del proyecto. 
 
-Algunos conceptos teóricos de \LaTeX \footnote{Créditos a los proyectos de Álvaro López Cantero: Configurador de Presupuestos y Roberto Izquierdo Amo: PLQuiz}.
+\section{Sistemas Embebidos}\label{sec:SE}
 
-\section{Sistemas Embebidos}
+Ya hablamos anteriormente de que es un sistema empotrado, en este apartado profundizaremos más sobre ello, veremos las funcionalidades de estos dispositivos y su uso en un entorno real. También se detallarán los tipos de comunicación elegidos para este proyecto y el motivo de su elección en relación a otros pero, primero, ¿Qué es un sistema embebido?
 
 Los sistemas embebidos o empotrados son herramientas de computación programadas con una o varias funcionalidades concretas. 
-Las grandes ventajas de estos sistemas son que trabajan de forma autónoma, ininterrumpida y sin necesidad de mantenimiento. Estas características hacen que su uso sea muy interesante para el sector industrial.[oasys]
+Las grandes ventajas de estos sistemas son que trabajan de forma autónoma, ininterrumpida y sin necesidad de mantenimiento. Estas características hacen que su uso sea muy interesante para el sector industrial y doméstico. Estos sistemas permiten hacer prácticamente cualquier tipo de tarea ya que además del hardware mínimo para que se ejecute un programa se le pueden añadir infinidad de periféricos que nutren de distintos usos a las placas más básicas. Al mismo tiempo el hecho de que se puedan comunicar entre ellas añade además varios usos muy interesantes, como podremos ver en el apartado de Trabajos Relacionados.
+ 
+\subsection{Hardware}\label{sec:Hardware}
 
-\subsection{Hardware}
+En los sistemas embebidos prácticamente todos los componentes están integrados en microcontrolador. En este caso el microcontrolador viene instalado en una placa de demostración que provee la opción de conectar periféricos mediante pines o entradas específicas para un periférico en concreto. 
 
-En los sistemas embeebidos. practicamente todos los componentes estan integrados en la placa base. Este hardware tambien provee la opcion de conectar perifericos mediante pines o entradas especificas para un periferico en cooncreto.[oasys] 
+\imagen{placa}{Placa FRDM-K64F}
 
-\subsubsection{Hardware del Proyecto}
 
-//////////////////////
-k64f y caracteristicas
-esp8266
+En el caso de los sistemas embebidos cada uno de ellos se construye según el propósito especifico que se va a realizar con ello, es decir, dependiendo de su objetivo tendrá unas características hardware u otras. Sin embargo, sí que hay algunos componentes mínimos presentes en todas las placas como pueden ser por ejemplo, un microcontrolador (MCU) encargado de controlar las operaciones del SE. Un MCU está compuesto por un procesador, memoria Ram y Rom y puertos de entrada y salida. 
+El MCU se encarga de ejecutar las instrucciones del programa cargado en memoria, en otras palabras, gestiona las entradas y salidas de datos. además de este componente, necesitaríamos de más periféricos para obtener algunas funcionalidades más específicas, algunos de estos periféricos son:
+
+\begin{itemize}
+\item[Puertos de comunicación]
+\item[Sensores]
+\item[Dispositivos de interfaz humana]
+\item[Actuadores]
+\item[Conversores ADC y DAC]
+\item[Ultrasonidos]
+\item[Puertos de comunicación]
+\end{itemize}
+
 
 \subsection{Software}
 
-El software embebido o empotrado reside en memoria de sólo lectura y se utiliza para controlar productos y sistemas de los mercados industriales y de consumo [redlyc].
+El software embebido o empotrado reside en memoria de sólo lectura. Con relación al software y hardware utilizados en este proyecto existen 2 posibilidades de cara a cargar el programa en el microcontrolador:
+\begin{description}
+\item[MBED] Este es el modo en el que vienen las placas por defecto. En este modo al conectar la placa al ordenador aparecerá como un medio extraíble y deberemos arrastrar los ficheros ".bin" en el que estaría el desarrollo de nuestro programa.
+\item[OpenSDA] (Open Serial and Debug Adapter) o adaptador para depuración serie y comunicación serial en castellano. OpenSDA es la interfaz de bajo costo que ofrece NXP para la depuración y programación de sus
+microcontroladores.
+\end{description}
 
-\subsubsection{Software del Proyecto}
-
-/////////////////// No se yo si poner esto
-mcuexpresso
-drivers, middleware, SO, etc
-jlink
-
-
-\section{Tecnologias de Conexion para SE}
-
-Existen varias formas de comunicarse con los SE, tanto con componentes externos como entre dos o mas microcontroladores. Por lo general, se pueden conectar a los SE periféricos que lo doten de conexiones infrarrojas bluetooth wifi, entre otros. De esta manera conseguimos que podamos enviar y recibir información a estos sistemas. En este apartado vamos a hablar sobre las conexiones de red wifi y ethernet que son las que hemos usado en este proyecto.
-
-PROTOCOLO UTILIZADO TCP/IP + CAPAS
-
-\subsection{WIFI}
+\imagen{openSDA}{Diagrama de Bloques de OpenSDA}
 
 
-
-\subsection{Ethernet}
-
-\section{Conexion Serial, I2C}
-
-
-
-\section{Referencias}
-
-Las referencias se incluyen en el texto usando cite \cite{wiki:latex}. Para citar webs, artículos o libros \cite{koza92}.
-%- https://oasys-sw.com/sistemas-embebidos-industria/
-%- https://www.redalyc.org/pdf/944/94415759009.pdf
-- 
-
-\subsubsection{NOTAS}
-
-En oasys tienes mas informacion sobre el ambito industrial. beneficios y vulnerabilidades
-
-\section{Imágenes}
-
-Se pueden incluir imágenes con los comandos standard de \LaTeX, pero esta plantilla dispone de comandos propios como por ejemplo el siguiente:
-
-\imagen{escudoInfor}{Autómata para una expresión vacía}
-
-
-
-\section{Listas de items}
-
-Existen tres posibilidades:
-
-\begin{itemize}
-	\item primer item.
-	\item segundo item.
-\end{itemize}
-
-\begin{enumerate}
-	\item primer item.
-	\item segundo item.
-\end{enumerate}
+En el caso de este proyecto es necesario diferenciar algunos conceptos en lo relativo al software así como:
 
 \begin{description}
-	\item[Primer item] más información sobre el primer item.
-	\item[Segundo item] más información sobre el segundo item.
+\item[SO en tiempo real:\label{ref:SOTiempoReal}] Es un sistema operativo que se utiliza para facilitar la gestión de  multitareas y el uso de tareas en dispositivos con recursos y tiempos limitados. Además deben ser deterministas en el tiempo de ejecución. Para poder comprender adecuadamente la utilidad de un RTOS debemos conocer los siguientes conceptos:
+\begin{description}
+\item[Tarea] Las tareas, a las cuales también podríamos referirnos como procesos o hilos. Estos hilos se ejecutan de manera independiente, es decir, tienen su propio espacio de memoria. El aislamiento del espacio de memoria se garantiza mediante protección por hardware (MPU) restringiendo su acceso. Las tareas pueden tener diferentes estados según lo determine el RTOS:
+	\begin{description}
+		\item[Bloqueado:] La tarea está esperando un evento que puede ser un bloqueo de tipo mutex o semáforo, o una liberación de espacio en memoria .
+		\item[Listo:] La tarea está lista para ejecutarse en la CPU, pero se mantiene a la espera porque la CPU ya está siendo utilizada.
+		\item[En Ejecución:] La tarea se está llevando a cabo.
+	\end{description}
+\item[Programador:] Con programador nos referimos a la persona que desarrolla el funcionamiento del sistema operativo en tiempo real. Existen distintas técnicas para la programación de estos SO:
+	\begin{description}
+		\item[Expropiativo:] Se ejecuta la tarea con mayor prioridad. Incluso se puede interrumpir una tarea en curso si hay otra lista con prioridad mayor.
+		\item[Apropiativo:] En este caso solo se interrumpe una tarea si esta aborta.
+	\end{description}
+En el caso de este proyecto FreeRTOS utiliza la programación Preventiva permitiendo así cumplir con las normas de tiempo real. Por otro lado esto tiene una mayor carga en el microcontrolador ya que tiene que gestionar el cambio de tarea.
+\item[Comunicación entre tareas:] Como ha ocurrido en el software realizado es común que algunas variables locales de alguna tarea deban ser utilizadas en otras tareas. Para ello existen dos opciones. La primera y más simple es la utilización de variables globales. La segunda opción es la utilización de colas y buzones que nos modifiquen o lean el valor de esa variable.
 \end{description}
-	
+\item[Middelware:] Este software se encarga de 'comunicar' el sistema operativo con los programas. Es un conjunto de librerías que sirven como rutinas para crear una infraestructura que ofrece servicios a los desarrolladores.
+\item[Drivers:] Los \extranjerismo{drivers} o controladores de dispositivos proveen las instrucciones necesarias para que un dispositivo externo, un periférico, pueda ser controlado por el sistema operativo que el sistema embebido utilice.
+\end{description}
+
+
+\section{Tecnologías de Comunicación para SE}\label{sec:Comunicaciones}
+
+Existen varias formas de comunicarse con los SE, tanto con componentes externos como entre dos o más microcontroladores. Por lo general, se pueden conectar los SE a periféricos que lo doten de conexiones \extranjerismo{bluetooth}, infrarrojos o wifi, entre otros. De esta manera conseguimos que podamos enviar y recibir información de otros sistemas. Por otro lado tenemos otro tipo de comunicaciones, en este caso para la comunicación con otros elementos, los periféricos. Según la funcionalidad que estemos usando se elegirán una tecnología acorde para el intercambio de datos. En los próximos dos apartados hablaremos sobre este tipo de tecnologías de comunicación y sus utilidades específicas. 
+
+\subsection{Comunicación de Red}
+En este apartado vamos a hablar sobre las conexiones de red. Por un lado, trataré la conexión vía ethernet que es la que se ha usado en el resultado final del proyecto. Por otro lado, también tocaré la conexión vía wifi ya que durante el desarrollo de este trabajo también se trató de utilizar este modo. Aunque, finalmente se acabó por elegir solo la conexión ethernet, se realizó bastante investigación sobre este tipo de conexión y como implementarla y puesto que si se consiguió transmitir datos mediante comandos 'AT' vía wifi, voy a exponer toda esta información en esta sección.
+
+\subsubsection{TCP/IP}
+Podríamos definir el modelo TCP/IP como un conjunto de normas que hace que varios equipos puedan comunicarse adecuadamente. Sería algo así como las normas sintácticas que seguimos los humanos para hablar y entendernos los unos a los otros. Este modelo es el más utilizado en Internet y se divide en cuatro grandes capas o niveles.
+
+\imagen{protocolo-TCPIP}{Capas del modelo TCP/IP}
+
+\begin{description}
+\item[Capa de enlace de datos] 
+Esta capa debe manejar las partes físicas del envío y recepción de datos. Esta comunicación se puede llevar a cabo mediante el cable Ethernet o de manera inalámbrica, la tarjeta de interfaz de red, el controlador del dispositivo en el equipo, etc.
+
+\item[Capa de Internet] //MEJORAR////////
+La capa de Internet (también denominada capa de red) controla el movimiento de los paquetes alrededor de la red. Se encarga del direccionamiento de los dispositivos y del empaquetado y manipulación de los datos para su correcto envío. Esta capa utiliza las versiones IPV4 e IPV6 para el control y notificación de errores, existe además, IGMP (Internet Group Management Protocol) y MLD (Multicast Listener Discovery) que se usan para establecer grupos de difusión múltiple.
+
+\item[Capa de transporte]
+Esta capa se asegura de conseguir que la conexión de datos sea fiable entre dos dispositivos. Para ello envía los datos en paquetes y se asegura de que el otro equipo indique que ha recibido los paquetes correctamente. En otras palabras, se encarga de facilitar la comunicación lógica entre dispositivos. Esta comunicación puede seguir dos protocolos:
+	\begin{description}
+	\item[TCP] es un protocolo orientado a la conexión, proporciona un conjunto completo de servicios para aquellas aplicaciones que lo necesiten y su uso se considera fiable. Con el uso de puertos consigue que varias aplicaciones puedan usar una misma dirección IP. El protocolo establece
+una conexión virtual entre dos dispositivos capaz de enviar información de manera bidireccional. Las transmisiones usan una ventana deslizante que permite detectar aquellas no reconocidas para que
+sean retransmitidas.
+	\item[UDP] A diferencia de TCP, UDP no utiliza ningún mecanismo de establecimiento de la conexión, no se realizan retransmisiones, por lo tanto, determinadas transmisiones pueden llegar a perderse. Su uso se justifica en aquellos escenarios donde la velocidad de la transmisión prima por encima de todo aunque se incurra ocasionalmente en la perdida de información.
+	\end{description}
+
+\item[Capa de aplicación]
+Esta capa nos ofrece la posibilidad de acceder a otras capas para usar sus servicios. Además a esta capa, pertenecen los protocolos como POP y SMTP que se utilizan para la comunicación, por ejemplo, el correo electrónico. Otro protocolo incluido en esta capa seria HTTP, que define la sintaxis y la semántica que se utiliza en la arquitectura web (clientes, servidores \extranjerismo{proxies}) para comunicarse. En este caso no es el usuario quien interactúa directamente con esta capa sino que interactúa con programas que, a su vez lo hacen con la capa de aplicación.
+\end{description}
+
+
+
+\subsection{Lwip}
+La librería lwIP pretende dar un servicio basado en el protocolo TCP/IP. Este software fue desarrollado por Adam Dunkels en Computer and Laboratory de Arquitecturas de Redes (CNA) en el Instituto Sueco de Informática Ciencias (SICS).
+
+El enfoque de la implementación de lwIP TCP/IP es reducir el uso de RAM sin dejar de tener un TCP a escala completa. Esto hace que lwIP sea adecuado para su uso en sistemas embebidos con decenas de kilobytes de RAM libre y espacio para alrededor de 40 kilobytes de código ROM.
+
+\subparagraph{Características}
 \begin{itemize}
-\item 
+  \item IP (Protocolo de Internet, IPv4 e IPv6), incluido el reenvío de paquetes
+    múltiples interfaces de red
+  \item ICMP (Protocolo de mensajes de control de Internet) para mantenimiento y depuración de redes
+  \item IGMP (Protocolo de gestión de grupos de Internet) para la gestión del tráfico de multidifusión
+  \item MLD (descubrimiento de oyentes de multidifusión para IPv6). Tiene como objetivo cumplir con
+    RFC 2710. Sin soporte para MLDv2
+  \item ND (descubrimiento de vecinos y configuración automática de direcciones sin estado para IPv6).
+    Tiene como objetivo cumplir con RFC 4861 (descubrimiento de vecinos) y RFC 4862
+    (Autoconfiguración de direcciones)
+  \item UDP (Protocolo de datagramas de usuario) que incluye extensiones UDP-lite experimentales
+  \item TCP (Protocolo de control de transmisión) con control de congestión, estimación de RTT
+    y recuperación rápida/retransmisión rápida
+  \item API nativa/sin formato para un rendimiento mejorado
+  \item API de socket similar a Berkeley opcional
+  \item DNS (resolución de nombres de dominio)
 \end{itemize}
 
-\section{Tablas}
+\subsection{Wifi: módulo ESP8266}
 
-Igualmente se pueden usar los comandos específicos de \LaTeX o bien usar alguno de los comandos de la plantilla.
+Según la informacion mostrada en \cite{moduloEsp8266} el módulo ESP8266 se trata de un chip integrado con conexión Wifi y compatible con el protocolo TCP/IP. El objetivo principal es dar acceso a cualquier microcontrolador a una red. La gran ventaja del ESP8266 es su bajo consumo. Soporta IPv4 y los protocolos TCP/UDP/HTTP/FTP.
 
-\tablaSmall{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{herramientasportipodeuso}
-{ \multicolumn{1}{l}{Herramientas} & App AngularJS & API REST & BD & Memoria \\}{ 
-HTML5 & X & & &\\
-CSS3 & X & & &\\
-BOOTSTRAP & X & & &\\
-JavaScript & X & & &\\
-AngularJS & X & & &\\
-Bower & X & & &\\
-PHP & & X & &\\
-Karma + Jasmine & X & & &\\
-Slim framework & & X & &\\
-Idiorm & & X & &\\
-Composer & & X & &\\
-JSON & X & X & &\\
-PhpStorm & X & X & &\\
-MySQL & & & X &\\
-PhpMyAdmin & & & X &\\
-Git + BitBucket & X & X & X & X\\
-Mik\TeX{} & & & & X\\
-\TeX{}Maker & & & & X\\
-Astah & & & & X\\
-Balsamiq Mockups & X & & &\\
-VersionOne & X & X & X & X\\
-} 
+\imagen{pines8266}{Pines del módulo wifi 8266}
+
+\textbf{ESP32 soporta las siguientes características:}
+\begin{itemize}
+\item Soporta los principales buses de comunicación (SPI, I2C, UART).
+\item Comunicación unicast encriptada y sin encriptar
+\item Se pueden mezclar clientes con encriptación y sin encriptación
+\item Permite enviar hasta 250-bytes de carga útil
+\item Se pueden configurar \extranjerismo{callbacks} para informar a la aplicación si la transmisión fue correcta
+\item Largo alcance, pudiendo superar los 200m en campo abierto.
+\end{itemize}
+
+\textbf{Pero también tiene sus limitaciones, las cuales son:}
+\begin{itemize}
+\item El número de clientes con encriptación está limitado. Esta limitación es de 10 clientes para el modo Estación, 6 como mucho en modo punto de acceso o modo mixto.
+\item El número total de clientes con y sin encriptación es de 20.
+\item Sólo se pueden enviar 250 bytes como mucho.
+\end{itemize}
+
+\section{FreeRTOS}\label{sec:RTOS}
+Algunos apartados más atrás ya hablamos sobre que era un \extranjerismo{RTOS} \ref{ref:SOTiempoReal}, en esta sección veremos cual ha sido el sistema operativo que he utilizado en este proyecto.
+FreeRTOS es robusto, tiene un tamaño reducido y prácticamente una compatibilidad del 100\%, por todo ello es el sistema operativo en tiempo real más utilizado en microcontroladores pequeños en el mundo.
+Además cuenta con varias demostraciones preconfiguradas y detalladas referentes al Internet de las cosas (IoT). Esta mantenido por AWS en beneficio de la comunidad de FreeRTOS. Incluye, también, un soporte a largo plazo.
+Como hemos podido observar es un software completísimo, referente mundial, fácil de usar y con un soporte que saca actualizaciones constantemente.
+
+
+\subsection{Comunicaciones para los Periféricos}
+Como ya mencionamos anteriormente la mayor funcionalidad que podemos dar a estas placas viene con la condición de poder comunicarnos entre ellas y con otros periféricos. Veamos algunos tipos de conexión, además de vía ethernet o wifi, que hemos utilizado en este trabajo.
+
+\subsubsection{UART}
+Uart, 'Universal Asynchronous Receiver-Transmitter' o en castellano Receptor-transmisor asíncrono universal. Su funcionamiento es sencillo, las conexiones son cruzadas entre los dos dispositivos, es decir el pin de transmisión (TX) del transmisor estará conectado al pin receptor (RX) del dispositivo que recibe la comunicación y viceversa. Esta comunicación es asíncrona por lo que no utiliza relojes para el envió y recepción de mensajes. Para que ambos dispositivos sepan cuando tienen que empezar y dejar leer bits se añaden a cada envío bits de inicio y parada. Es importante que ambos equipos tengan la misma tasa de Baudios configurada para que los bits se lean adecuadamente, de no ser así la comunicación fallaría ya que un dispositivo enviaría bits a una velocidad diferente de la que se leen ocasionando malas lecturas. La velocidad predeterminada suele ser de 115200 baudios.
+
+Por otro lado tenemos la comunicación usart ‘Universal Synchronous and Asynchronous Receiver-Transmitter’ que puede realizar procesos de comunicación con relojes. 
+
+
+\tablaSmallSinColores{Diferencias UART vs USART}{l c c}{personal}
+{\multicolumn{1}{c}{Caracteristicas} & Usart & Uart\\}
+{
+Modo & Semidúplex & Dúplex\\
+Velocidad & USART es mayor & UART es menor.\\
+Funcionamiento & Señales de datos y de reloj & Señales de datos\\
+Datos & Bloques	& Bytes \\
+Complejidad & Más complejo & Más simple de utilizar\\ 
+}
+
+El principal motivo de hacerlo con Uart en vez de con Usart, es que los comandos de los motores se envían en bytes y no en bloques, por lo que, como hemos visto en la tabla, es necesario hacerlo por Uart.
+
+\subsubsection{I2C}
+El protocolo I2C, "Inter-Integrated Circuit" usa dos líneas para comunicarse con otros dispositivos. Por un lado tenemos SCL (línea de reloj en serie) y por otro lado tenemos SDA (línea de datos), esta última es la encargada de transmitir los datos. Este tipo de comunicación suele estar destinado al intercambio de datos con módulos o sensores y se usa en arquitecturas maestro-esclavo:
+\begin{itemize}
+\item Maestro: Dispositivo que proporciona un reloj para la comunicación
+\item Esclavo: Dispositivo que utiliza el reloj del maestro
+\end{itemize}
+En nuestro caso utilizamos este tipo de comunicación para el uso de la pantalla LCD.
+
+\section{Periféricos}\label{sec:perifericos}
+En esta parte de la memoria vamos a ver las especificaciones de los periféricos utilizados en este proyecto
+
+\subsection{potenciómetro y sensor de Temperatura}
+
+El potenciómetro es un elemento hardware que busca determinar un potencial eléctrico en una conexión. Generalmente se consigue mediante la comparación de la potencia de entrada y la de salida. Esta diferencia de potencial es lo que se conoce como voltaje.
+Su funcionamiento es sencillo, cuenta con tres resistencias, dos en cada uno de los extremos, que pueden cambiar de valor y una tercera resistencia con la cual podemos interactuar. Esta tercera resistencia nos permite aumentar o disminuir su resistencia propiamente dicha. De esta forma conseguimos poder variar el valor entre las conexiones.
+
+Un sensor de temperatura o termómetro es un dispositivo que transforma los cambios de temperatura (magnitud física) en señales eléctricas(voltaje). Por lo general está  formado por un sensor encapsulado en una cubierta protectora. Entre el sensor y la capsula encontramos un material que es  conductor térmico y que permite traspasar rápidamente estos cambios de temperatura. Existen tres tipo de sensores de temperatura descritos perfectamente en \cite{TempSensTipos}:
+
+\begin{description}
+\item[Termopares] Funcionan mediante un principio de generación de una corriente entre dos metales diferentes unidos que tienen diferente comportamiento eléctrico en función de la temperatura. La señal generada se procesa y da lugar a una medición de temperatura. Son equipos sencillos, baratos y con una precisión suficiente para su uso en edificación. Sin embargo, tienen una respuesta lenta.
+\item[Termorresistencias] Están constituidas por resistencias cuya conductividad varía en función de la temperatura, lo cual genera una señal que, una vez procesada permite obtener la medición de temperatura. Su velocidad de respuesta depende de la masa de la resistencia.
+\item[Sensores electrónicos] Funcionan mediante dispositivos electrónicos que generan una corriente o señal en función de la temperatura. Son equipos con una respuesta mucho más rápida, pero más caros.
+\end{description}
+

@@ -1,4 +1,38 @@
 \capitulo{7}{Conclusiones y Líneas de trabajo futuras}
 
-Todo proyecto debe incluir las conclusiones que se derivan de su desarrollo. Éstas pueden ser de diferente índole, dependiendo de la tipología del proyecto, pero normalmente van a estar presentes un conjunto de conclusiones relacionadas con los resultados del proyecto y un conjunto de conclusiones técnicas. 
-Además, resulta muy útil realizar un informe crítico indicando cómo se puede mejorar el proyecto, o cómo se puede continuar trabajando en la línea del proyecto realizado. 
+En este capítulo veremos las conclusiones llegadas tras haber terminado el proyecto. Además se expondrán algunas ideas de cómo podríamos continuar con este mismo trabajo o realizar algunos distintos también basados en los sistemas embebidos y las comunicaciones entre ellos.
+
+
+\section{Conclusiones} \label{sec:Conclusiones}
+Mediante la realización de este trabajo he podido demostrar los conocimientos que he adquirido durante estos cuatro  años en la realización de esta carrera. En este proyecto se han trabajado conocimientos adquiridos en varias asignaturas entre las cuales destacarían:
+
+\begin{description}
+\item[Programación concurrente y de tiempo real]
+\item[Administración de Redes y sistemas]
+\item[Programación]
+\item[Gestión de proyectos]
+\end{description}
+
+Por supuesto, este trabajo también me ha hecho darme cuenta de muchos conocimientos que no tengo y he tenido que aprender.
+Otra de las partes más importantes de la realización del TFG es la gestión emocional. El hecho de saber organizarte para un trabajo de tantas horas con una fecha de entrega tan lejana, junto con la realización de las demás actividades de tu vida, hacen que tengas que mejorar tus habilidades en materias como la responsabilidad, organización, fuerza de voluntad, perseverancia, entre otras, y por supuesto al mismo tiempo tienes que luchar contra otras muchos vicios contraproducente tales como la pereza y tener que sobreponerte a las adversidades. 
+En cuanto a la organización y planificación del proyecto ha sido muy enriquecedor el hecho de utilizar GitHub y la metodología Scrum. De esta manera he podido ver como se realiza un proyecto de este tipo en un ejemplo real y aprender cómo funciona esta herramienta. Además usarla ha permitido que en caso de fallos en la programación del sistema embebido dispusiera siempre de una copia anterior que me servía como \extranjerismo{backUp}.
+
+Dicho esto es importante hacer hincapié en que habiendo terminado el trabajo puedo dar por completados los objetivos técnicos, generales y personales expuestos en el \ref{sec:OGenerales}. 
+
+Personalmente ha sido de gran interés el uso de sistemas embebidos en mi proyecto puesto que a medida que avanzaba con el proyecto y comprendía su utilización cada vez surgían más y más utilidades que se le pueden dar, tal y como veremos en el próximo apartado, líneas de trabajo futuras. Además su estructura permite ampliar sus funcionalidades fácilmente por lo que cada vez se utilizan más en distintos ámbitos como, industrial, electrónico, informático o incluso en la salud. Otra de las grandes ventajas de usar estos sistemas en la actualidad es el hecho de que se puedan comunicar entre ellas estando a pocos metros o incluso a kilómetros de distancia. 
+
+Es de justicia decir también, que al igual que estos sistemas permiten un gran número de usos, también tienen puntos débiles. Debemos poner de manifiesto que su programación a bajo nivel puede resultar bastante complicado al principio y en muchas ocasiones se necesitan placas específicamente creadas para algunos periféricos concretos, debido a su voltaje número de pines o funcionamiento. Esto genera que cada vez que se hace un proyecto, dependiendo de la dificultad y dimensiones de este, se deba crear un sistema especifico por no hablar de que cada sistema embebido dispone de una programación diferente. Además por lo general disponen de poca memoria y por lo tanto requieren que las librerías y el propio código y variables utilizadas no sean demasiado extensos, ni requieran del almacenamiento de muchos datos.
+
+
+\section{Líneas de trabajo futuras}\label{sec:LTF}
+
+Este proyecto, al tratarse de un sistema embebido, puede ser continuado en varios puntos. Las opciones son prácticamente infinitas y solo se debe imaginar un objetivo para poder continuar. Algunos puntos importantes sobre los que se podría trabajar serian:
+
+\begin{description}
+\item La integración de la conexión vía wifi con el módulo ESP8266 o semejantes. De este modo podríamos replicar el mismo proyecto u otro diferente sin depender de la utilización de cables de red. 
+\item Continuando con más conexiones también podríamos utilizar la conexión bluetooth tanto para conectar la placa o bien a un móvil o a un ordenador de modo que pudiéramos utilizar un hardware que siempre tenemos a mano para gestionar los parámetros necesarios.
+\item Otra línea de futuro seria implementar algún sistema domótica, pudiendo llegar al punto de utilizarlo en tu propia casa. Algunos ejemplos serian, continuando con la idea del sensor de temperatura conectar o bien por infrarrojos o por bluetooth una conexión de la placa al aire acondicionado y que este variara la temperatura automáticamente, incluso la implementación de un sistema de reconocimiento de voz.
+\item Estas placas mediante protocolos IoT y servicios como por ejemplo Azure IoT Hub permiten conectar, supervisar y administrarlos. Además se pueden conectar a la nube para subir y descargarse datos de manera que pueden crear informes sobre el funcionamiento de un sensor.
+\item Relaciona con la seguridad se podría tratar de cifrar todas las comunicaciones que haya entre dispositivos mediante bluetooth o Internet. En el caso de la conexión a Internet la propia pila que se ha utilizado en este proyecto, lwIP, dispone de un tipo cifrado conocido como \extranjerismo{Transport Layer Security} (TLS) de manera que las comunicaciones entre placas estuvieran cifradas.
+\item En otros ámbitos con estas placas se podría realizar proyectos para realizar una acción, como por ejemplo abrir una puerta, mediante reconocimiento biométrico, bien facial o bien dactilar.
+\end{description}

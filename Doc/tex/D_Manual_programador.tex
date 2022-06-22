@@ -1,11 +1,94 @@
 \apendice{Documentación técnica de programación}
 
 \section{Introducción}
+Este apéndice muestra las herramientas necesarias para entender y poder reutilizar el software presentado. Por supuesto no es necesario utilizar las mismas herramientas
+Para el desarrollo del trabajo se ha utilizado MCUXpresso. A continuación se muestra como instalar y configurar este IDE. Además también veremos otras herramientas que nos ayudaran a comprobar el correcto funcionamiento del software.
 
 \section{Estructura de directorios}
 
+La estructura de directorios del software es la siguiente:
+\imagen{directorios}{Estructura de directorios}
+
+
+\begin{description}
+  \item[/] Directorio raíz, contiene el resto de los directorios. Se incluyen ficheros como LICENSE que contiene los términos y condiciones del licenciamiento del software y el fichero MEX que contiene los datos de las configuraciones de los pines, relojes y periféricos. Este último fichero lo genera el propio IDE.
+  \item[/CMSIS/] Cortex Microcontroller Software Interface Standard (CMSIS). Reúne las fuentes que proporcionan interfaces al procesador y sus periféricos.
+  \item[/amazon-freertos/] Fuentes relacionadas con FreeRTOS, sistema operativo en tiempo real usado en el proyecto.
+  \item[/board/] Fuentes autogenerados por el IDE que permiten habilitar y configurar el hardware de la placa de desarrollo.
+  \item[/doc/] Documentación del proyecto.
+  \item[/drivers/] Controladores necesarios para trabajar con el hardware.
+  \item[/lwip/] Fuentes relativos a lwIP, la implementación de la pila de protocolos TCP/IP.
+  \item[/source/] Código fuente del proyecto. El fichero main.c es el que contiene el código del funcionamiento de las placas. Además se encuentran los ficheros que agrupan herramientas para ////
+  \item[/startup/] Código de arranque generado por el IDE.
+  \item[/utilities/] Código generado por el IDE con utilidades auxiliares usadas para depuración o registro de eventos.
+\end{description}
+
 \section{Manual del programador}
+\subsection{Descarga e instalación de MCUXpresso}
+En primer lugar será necesaria descargar el IDE desde la página oficial de Nxp. Este software estará en la pestaña de desarrolladores. Para poder descargarlo será necesaria tener una cuenta de NXP, la cual es gratuita y te puedes registrar fácilmente desde el sitio web.
+Dicho esto, iniciamos sesión en la página vamos a la pestaña en la que se encuentra el software y pinchamos en descargar. Una vez hecho esto, elegimos el sistema operativo donde se ejecutará nuestro IDE. El instalador sigue los pasos habituales en este tipo de instalaciones, aceptar la licencia, elegir la ubicación donde se guardarán los archivos y controladores de programa, etc. Podemos dejar todas estas opciones por defecto o variarlas a nuestro gusto. Al descargar el IDE viene con él la herramienta Config Tools que nos ayudara hacer la configuración a bajo nivel de la placa. Una vez tenemos instalado MCUXpresso, lo abrimos. Lo primero que nos pide es elegir una ruta donde guardar nuestros proyectos. Es recomendable que sea una ruta fácilmente accesible pues nos será de gran ayuda poder llegar rápidamente y poder importar de manera más sencilla los proyectos que necesitemos.
+\imagen{}{}
+
+\subsection{Descarga e instalación del SDK}
+Tras esta instalación del IDE, es importante la realización de este segundo paso en el que descargaremos el SDK. Podemos descargarlo también desde la web de NXP, en esta pestaña deberemos elegir el SDK correspondiente a la placa y la versión, que deberá ser superior a la 2.0. 
+La descarga del SDK nos permite construir proyectos específicos para nuestra placa, permite además añadir los componentes necesarios según las funcionalidades del SE. Permite descargar e instalar drivers, el tipo de sistema operativo o configurar el middleware. En nuestro caso deberemos seleccionar como mínimo el sistema operativo FreeRTOS y como drivers lwIP y ADC para la medición del sensor de temperatura y la lectura de los potenciómetros. Para poder elegir estos add-ons deberemos clicar en esta parte:
+
+\imagen{}{}
+
+y Se abrirá un interfaz como esta:
+
+\image{}{}
+
+Donde podremos elegir los componentes que queramos.
+
+
+
+\subsection{Configuración de pines, relojes y periféricos}
+La configuración a bajo nivel de la placa es una de las partes más importantes y a la vez más complejas de entender al principio, por ello voy a explicar brevemente cómo funcionan estas interfaces del ide
+
+\begin{description}
+\item[pines] En cuanto a los pines, estas placas disponen de 100 configuraciones para los pines permitiendo así la integración de varios periféricos aumentando su funcionalidad. En la siguiente figura podemos observar la interfaz para configurarlo:
+\imagen{}{}
+En la imagen se pueden ver tanto los pines disponibles, como los pines que ya hemos configurado y una imagen del microcontrolador con todos los pines.
+Como habréis podido observar cada uno de los pines de la placa tiene varias configuraciones que podemos utilizar según nuestras necesidades. Para configurar un pin buscaremos uno que cumpla con el uso que queremos, lo clicamos y pinchamos en el tipo de periférico que vamos a utilizar
+\item[relojes] En el caso de este software se ha utilizado siempre el reloj de general de la placa pero podemos configurar más relojes dependiendo del objetivo del periférico que vaya a usarlo. Veamos una imagen de la interfaz.
+\imagen{relojes}{}
+\item[periféricos] el microcontrolador permite conectar varios periféricos a la placa al mismo tiempo. En la siguiente figura veremos cuales son:
+\imagen{periféricos}{}
+Como se puede apreciar hay algunos repetidos como por ejemplo Uart puesto que esta placa permite tener hasta 4 comunicaciones Uart configuradas.
+\end{description}
+
+
 
 \section{Compilación, instalación y ejecución del proyecto}
 
-\section{Pruebas del sistema}
+En esta sección vamos a ver como compilar y ejecutar un proyecto. Para ello lo primero que vamos a hacer es coger un proyecto de ejemplo del SDK. Vamos a la pestaña de la imagen y seleccionamos ‘//////’
+\imagen{}
+Una vez tenemos el proyecto vamos a la carpeta sources y vemos que fichero tiene los datos fuente del proyecto. Para poder compilar clicaremos en la opción build para ver si el proyecto compila adecuadamente o tiene errores. Posteriormente deberemos colocar por usb la placa FRDMK64F al ordenador. Antes de seguir con el debugueo es importante que la placa este en modo OpenSDA, para ello al conectar la placa al ordenador deberemos estar pulsando el botón reset mientras lo hacemos. Tras esto se debería de abrir una carpeta llamada bootloader donde deberemos copiar el fichero openSDA. Desconectamos y conectamos la placa y ya podremos ejecutar la opción debug desde el IDE esto comenzara la ejecución de nuestro ejemplo. Una vez comience la ejecución se abrirá también una consola y podremos utilizar el SE sin problemas.
+
+
+
+rpc
+Con los entornos de desarrollo y sus respectivos proyectos preparados es
+posible compilar los códigos fuente. Dependiendo del software a ejecutar es
+necesario tomar diferentes caminos para su puesta en marcha.
+Compilación, escritura y ejecución del sistema empotrado
+Existen varias vías para compilar el código fuente. Una de ellas es hacer
+clic derecho sobre el proyecto y en el menú contextual, pulsar sobre “Build
+Project”. Otra forma es pulsar sobre su icono correspondiente en la barra de
+herramientas.
+Para realizar la escritura, o flash, de los binarios en el sistema empotrado
+y que pueda ejecutarlos hay que lanzar desde el IDE la operación de “Debug”.
+Igual que la compilación, se puede hacer desde el menú contextual o desde
+la barra de herramientas. Cabe decir que la operación de depuración ejecuta
+automáticamente la de compilación, haciendo innecesario tener que ordenarla
+manualmente.
+La primera vez que se lanza un debug el IDE solicita la identificación
+de la placa de desarrollo. Para identificar la placa de desarrollo hay que
+especificar el uso de “SEGGER J-Link probes”, compatibles con OpenSDA,
+el adaptador serie y de depuración integrado en la placa
+
+\subsection{Pruebas del sistema: Packet Sender}
+Otra herramienta que puede ayudar enormemente a los desarrolladores es packet sender. Para descargarla tendremos que ir a su página web oficial y descargar la herramienta para el sistema operativo donde vayamos a utilizarla. Packet Sender permite enviar paquetes por el protocolo tcp, a una ip y un puerto determinados. Además se pueden guardar nuestros propios comandos de envío para reutilizarlos de forma más sencilla. De esta forma conseguimos poder comprobar si las placas reciben los comandos adecuadamente y cómo se comportan al recibirlo. Es como tener otra placa en red pero los comandos se envían de forma más sencilla desde nuestro propio ordenador
+\imagen{packetSender}{Interfaz de la herramienta Packet Sender}
+

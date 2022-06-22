@@ -1,11 +1,42 @@
 \apendice{Especificación de diseño}
-
 \section{Introducción}
+En el apéndice anterior se detallaron los requisitos del software. El siguiente paso es mostrar las especificaciones de diseño, en este apéndice se explicarán los motivos para las soluciones tomadas en relación al diseño de este programa. 
+El diseño del software recoge las cuestiones relativas a la gestión de los datos y su presentación, a la división de las partes del código en otros módulos y como se estructura su funcionamiento. En definitiva se expone como se estructura el software arquitectónicamente.
 
+\subsection{Ámbito del software}
+En este proyecto el usuario interactúa con la placa shield para enviar distintas comandos a los otros sistemas empotrados. 
 \section{Diseño de datos}
+La base del proyecto es la comunicación entre sistemas empotrados. En esta comunicación se envían comandos que serán recibidos y gestionados por otros sistemas embebidos. Los comandos son cadenas de caracteres que se dividirán y pasarán por diferentes filtros hasta llegar a la acción que el SE debe realizar. Veamos el proceso en más detalle.
+\subsection{Transferencia de los comandos.}
+///los comandos nunca van a fallar porque se configuran directamente mediante la programación
+La comunicación entre placas para enviar y recibir comandos se implementa siguiendo el modelo TCP Transmision Control Protrocol. Este modelo se encarga de realizar la conexión estableciendo la comunicación. Para realizar esta labor enviara unos comandos de sincronización tal y como veremos en la siguiente figura:
+\imagen{SYNyACK}
+Tras ejecutar este proceso se envían los comandos encapsulados en los segmentos TCP.
+\subsection{Comando setSpeed}
+//////////////////
+Sería mejor explicar el funcionamiento de los comandos etc y después hacer una tabla con todos los tipos de comandos y por último explicar alguna cosa especifica de cada uno
+/////////////////
+Este comando indica a la velocidad que deben girar los motores. Para ello el usuario deberá haber configurado mediante el potenciómetro la velocidad y pulsar el botón correspondiente para el envío de la velocidad al motor determinado. El comando se enviará en el siguiente formato:
+	Uart/mot1/255/
+Cuando este comando llega al correspondiente sistema embebido se descompone en pequeñas cadenas de caracteres que están separadas por barras ‘/’. La primera cadena UART siempre es así en caso de que queramos comunicarnos con los motores. La segunda ‘mot1’ indicará de que motor queremos cambiar la velocidad y podrá variar entre mot1 y mot2. Por último la tercera subcadena 255 será la velocidad a la que queremos que funcione el motor, que en nuestro caso podrá variar entre 255, 128 o 0.
+//Para setear estas velocidades también deberemos indicar el modo en el que deben trabajar los motores en este caso el comando seria: uart/Mode/0/
+Sub comando Parada emergencia
+Sub comando Conocer temperatura
+Sub comando obtener velocidad 
 
-\section{Diseño procedimental}
 
-\section{Diseño arquitectónico}
+\section{diseño arquitectónico}
+Que es el diseño arquitectónico de un software
 
+\subsection{diseño arquitectónico del SE}
+Una de las grandes cualidades de los sistemas empotrados es que se pueden relacionar con el entorno mediante sensores. Esto hace que el software se pueda reajustar según los datos obtenidos por estos sensores. 
+En sistemas empotrados simples, es decir, aquellos que no son en tiempo real el software su organización es más simple. En este caso como ya sabemos la gestión de las tareas se realiza en tiempo real por lo que la organización de estas es más compleja. Se deben asignar prioridades y es necesario utilizar un software que nos ayude en esta gestión, en este caso hemos utilizado FreeRtos
+En un SE sin restricciones podríamos utilizar cualquier otro sistema de gestión de tareas, cíclico, round robin, etc. En el primer ejemplo que he nombrado, cíclico, las tareas se ejecutan en bucle una detrás de la otra y una no puede empezar hasta que las anteriores hayan terminado. Cuando se ejecuta la última tarea se vuelve al principio. Además en este tipo de implementación podemos añadir un round robin (quantum) /es lo mismo?/  para que cada tarea tenga una duración máxima de tiempo de forma que el programa no se quede colgado, por otro lado también tiene el problema de que puede ser que algunas tareas no les dé tiempo a terminar de ejecutarse. 
+Una buena práctica para este tipo de sistemas es la utilización de interrupciones, así evitamos que el programa tenga que realizar escaneos del entorno constantemente. Las interrupciones se pueden programar para activarse al pulsar un botón o al detectar algún cambio en el entorno mediante los sensores. En ese momento se activa la interrupción y se pone en marcha la tarea correspondiente.
+Vistas este tipo de arquitecturas como ya comentamos anteriormente se va a utilizar un sistema operativo en tiempo real para la gestión de las tareas. Esta decisión se basa en el bajo tiempo de respuesta que proporciona el SO. Mediante las prioridades elegimos además que tarea debe ejecutarse antes que otras aportando flexibilidad a la ejecución del programa.
+/fotos/
 
+Mediante la programación de estas tareas se da respuesta a todos los casos de uso planteados en el apéndice anterior. //ampliar
+
+\subsection{Diseño del uso de la placa}
+????????

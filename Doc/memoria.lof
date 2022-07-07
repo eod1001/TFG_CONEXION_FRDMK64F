@@ -1,11 +1,24 @@
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Laboratorio del Proyecto}}{3}{figure.1.1}%
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Placa FRDM-K64F}}{12}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de Bloques de OpenSDA}}{13}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Capas del modelo TCP/IP}}{16}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Pinnes del modulo wifi 8266}}{19}{figure.3.4}%
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama resumen de la Metodología SCRUM}}{24}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Placa controladora de los motores}}{27}{figure.4.2}%
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Esquema arquitectónico de un SE de medición de sangre}}{39}{figure.6.1}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Sistema de Calefaccion con SE}}{41}{figure.6.2}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Esquema de conexiones del Laboratorio\relax }}{3}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Planta piloto del proyecto.\relax }}{4}{figure.caption.6}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de bloques placa FRDM K64F.\relax }}{10}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de bloques de OpenSDA\relax }}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Capas del modelo TCP/IP\relax }}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Trama UART\relax }}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Diagrama resumen de la Metodología SCRUM\relax }}{24}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Placa FRDM K64F.\relax }}{25}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Placa de expansión Arduino basic I/O.\relax }}{26}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Pantalla LCD con modulo IIC/I2C.\relax }}{27}{figure.caption.28}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Pantalla LCD}}}{27}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Modulo IIC/I2C}}}{27}{subfigure.10.2}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Motor EMG30 utilizado en la planta piloto.\relax }}{28}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Placa controladora de los motores\relax }}{29}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Sensor de temperatura, LM35.\relax }}{30}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Pines del módulo wifi 8266\relax }}{31}{figure.caption.36}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Caso de uso Kronospan.\relax }}{43}{figure.caption.42}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Temp: 31 grados}}}{43}{subfigure.15.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Temp: 34 grados}}}{43}{subfigure.15.2}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Placa `Maestro' en el CPD.\relax }}{44}{figure.caption.43}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Esquema arquitectónico de un SE de medición de sangre.\relax }}{45}{figure.caption.45}%
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Sistema de Calefaccion con SE.\relax }}{46}{figure.caption.46}%

@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt,twoside]{memoir}
-\usepackage{float}
+
 % Castellano
 \usepackage[spanish,es-tabla]{babel}
 \selectlanguage{spanish}
@@ -8,18 +8,11 @@
 \usepackage{lmodern} % Scalable font
 \usepackage{microtype}
 \usepackage{placeins}
+%\usepackage{url} % Mejora el tratamiento de URL, p. ej. en saltos de línea.
+\usepackage{float}
+\usepackage{subfig}
 
-% Bibliografía bajo norma UNE-ISO 690:2013.
-\usepackage[
-  backend=biber,     % "Backend" que genera la bibliografía.
-  style=iso-numeric, % Usa el método de referencias numéricas.
-  autolang=other,    % Soporta múltiples lenguajes en la bibliografía.
-  sortlocale=es_ES,  % Ordena la bibliografía usando el lenguaje indicado.
-  bibencoding=UTF8   % Codificación de caracteres de los archivos .bib.
-]{biblatex}
-
-% Indica el archivo usado por la memoria.
-\addbibresource{bibliografia.bib}
+ 
 
 \RequirePackage{booktabs}
 \RequirePackage[table]{xcolor}
@@ -27,7 +20,8 @@
 \RequirePackage{multirow}
 
 % Links
-\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks]{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks]{hyperref}
 \hypersetup{
 	allcolors = {red}
 }
@@ -41,11 +35,7 @@
 % Párrafos
 \nonzeroparskip
 
-% Huérfanas y viudas
-\widowpenalty100000
-\clubpenalty100000
-
-% Imagenes
+% Imágenes
 \usepackage{graphicx}
 \newcommand{\imagen}[2]{
 	\begin{figure}[!h]
@@ -64,16 +54,14 @@
 	\end{figure}
 }
 
-
-
-% El comando \figura nos permite insertar figuras comodamente, y utilizando
-% siempre el mismo formato. Los parametros son:
+% El comando \figura nos permite insertar figuras cómodamente, y utilizando
+% siempre el mismo formato. Los parámetros son:
 % 1 -> Porcentaje del ancho de página que ocupará la figura (de 0 a 1)
 % 2 --> Fichero de la imagen
 % 3 --> Texto a pie de imagen
 % 4 --> Etiqueta (label) para referencias
-% 5 --> Opciones que queramos pasarle al \includegraphics
-% 6 --> Opciones de posicionamiento a pasarle a \begin{figure}
+% 5 --> Opciones que queramos pasar a \includegraphics
+% 6 --> Opciones de posicionamiento a pasar a \begin{figure}
 \newcommand{\figuraConPosicion}[6]{%
   \setlength{\anchoFloat}{#1\textwidth}%
   \addtolength{\anchoFloat}{-4\fboxsep}%
@@ -109,7 +97,7 @@
 %
 % Nuevo comando para tablas pequeñas (menos de una página).
 \newcommand{\tablaSmall}[5]{%
- \begin{table}
+ \begin{table}[h]
   \begin{center}
    \rowcolors {2}{gray!35}{}
    \begin{tabular}{#2}
@@ -252,12 +240,7 @@
   \end{center}
 }
 
-% Comando para formatear palabras procedentes de otros
-% lenguajes distintos del castellano.
-% Estas palabras se pueden escribir en letra cursiva 
-\newcommand{\extranjerismo}[1]{\textit{#1}}
-% o con comillas si no se dispone de cursiva.
-%\newcommand{\extranjerismo}[1]{"{#1}"}
+
 
 \definecolor{cgoLight}{HTML}{EEEEEE}
 \definecolor{cgoExtralight}{HTML}{FFFFFF}
@@ -291,8 +274,6 @@
   \end{center}
 }
 
-
-
 \graphicspath{ {./img/} }
 
 % Capítulos
@@ -300,8 +281,6 @@
 \newcommand{\capitulo}[2]{
 	\setcounter{chapter}{#1}
 	\setcounter{section}{0}
-	\setcounter{figure}{0}
-	\setcounter{table}{0}
 	\chapter*{#2}
 	\addcontentsline{toc}{chapter}{#2}
 	\markboth{#2}{#2}
@@ -335,7 +314,7 @@
     \begin{minipage}{.8\textwidth}
       \vspace{.5cm}\Large
       \begin{center}
-      \textbf{TFG del Grado en Ingeniería Informática}\vspace{.6cm}\\
+      \textbf{TFM del Máster Universitario en Ingeniería Informática}\vspace{.6cm}\\
       \textbf{\LARGE\@title{}}
       \end{center}
       \vspace{.2cm}
@@ -360,21 +339,29 @@
   }
 \makeatother
 
-\newcommand{\nombre}{Enrique del Olmo Dominguez} %%% cambio de comando
+\newcommand{\nombre}{Enrique del Olmo Domínguez} %%% cambio de comando
+     
+% Comando para formatear palabras procedentes de otros
+% lenguajes distintos del castellano.
+% Estas palabras se pueden escribir en letra cursiva 
+\newcommand{\extranjerismo}[1]{\textit{#1}}
+% o con comillas si no se dispone de cursiva.
+%\newcommand{\extranjerismo}[1]{"{#1}"}
+
+% Comando para formatear los títulos de otras obras de creación.
+\newcommand{\titulo}[1]{\textit{#1}}
 
 % Datos de portada
-\title{Comunicacion con Sistemas Embebidos}
+\title{Comunicación TCP/IP con sistemas empotrados}
 \author{\nombre}
-\tutor{Alejandro Merino Gomez y Daniel Sarabia Ortiz}
+\tutor{Alejandro Merino Gómez y Daniel Sarabia Ortiz}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 
-
-\newpage\null\thispagestyle{empty}\newpage
-
+\newpage\null\thispagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \thispagestyle{empty}
@@ -382,13 +369,13 @@
 
 \noindent\includegraphics[width=\textwidth]{cabecera}\vspace{1cm}
 
-\noindent D. Alejandro Merino Gomez y D. Daniel Sarabia Ortiz, profesores del departamento de Ingeniería Electromecánica y área de Ingeniería de Sistemas y Automática.
+\noindent D. Alejandro Merino Gómez y D. Daniel Sarabia Ortiz, profesores del departamento de Ingeniería Electromecánica (Área de Ingeniería de Sistemas y Automática).
 
-\noindent Expone:
+\noindent Exponen:
 
 \noindent Que el alumno D. \nombre, con DNI 71309191Z, ha realizado el Trabajo final de Grado en Ingeniería Informática titulado Comunicación con Sistemas Embebidos. 
 
-\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección del que suscribe, en virtud de lo cual se autoriza su presentación y defensa.
+\noindent Y que dicho trabajo ha sido realizado por el alumno bajo la dirección de los que suscriben, en virtud de lo cual se autoriza su presentación y defensa.
 
 \begin{center} %\large
 En Burgos, {\large \today}
@@ -400,7 +387,7 @@ En Burgos, {\large \today}
 \begin{minipage}{0.45\textwidth}
 \begin{flushleft} %\large
 Vº. Bº. del Tutor:\\[2cm]
-D. Alejandro Merino Gomez
+D. Alejandro Merino Gómez
 \end{flushleft}
 \end{minipage}
 \hfill
@@ -430,13 +417,13 @@ D. Daniel Sarabia Ortiz
 % Abstract en castellano
 \renewcommand*\abstractname{Resumen}
 \begin{abstract}
-Los sistemas embebidos (SE) son pequeños controladores capaces de realizar unas tareas determinadas programadas con anterioridad. Este tipo de sistemas son muy utilizados en la actualidad ya que, su hardware, bajo consumo, facilidad de uso y su escalabilidad los hacen propicios para solucionar un montón de tareas. Estas tareas pueden ser desde la inclinación de una cama de hospital a la gestión de de unas cintas transportadoras de elementos en una industria.
-En este proyecto podremos ver como se pueden programar sistemas embebidos para comunicarse entre si mediante Internet. También veremos una simulación de para que se podrían utilizar este tipo de sistemas en un ámbito real. Para ello dispondremos de un laboratorio de pruebas con varias placas FRDM-K64F, dos servomotores, una pantalla LCD y un shield de expansion.
+Los sistemas embebidos (SE) son pequeños controladores capaces de realizar unas tareas determinadas programadas con anterioridad. Este tipo de sistemas son muy utilizados en la actualidad ya que, su hardware, bajo consumo, facilidad de uso y su escalabilidad los hacen propicios para solucionar un multitud de tareas. Estas tareas pueden ser desde la inclinación de una cama de hospital a la gestión de unas cintas transportadoras de elementos en una industria.
+En este proyecto podremos ver como se pueden programar sistemas embebidos para comunicarse entre sí mediante Internet. También se mostrará una simulación de para qué se podrían utilizar este tipo de sistemas en un entorno real. Para ello dispondremos de un laboratorio de pruebas con varias placas FRDM-K64F, dos servomotores, una pantalla LCD y un `shield' de expansión.
 \end{abstract}
 
 \renewcommand*\abstractname{Descriptores}
 \begin{abstract}
-Sistemas embebidos, Sistemas empotrados, conexion wifi, conexion ethernet, comunicacion entre sistemas, Internet de las cosas (IoT), NXP, uart, I2C, ADC, FRDM K64F. \ldots
+Sistemas embebidos, Sistemas empotrados, conexión ethernet, comunicación entre sistemas, Internet de las cosas (IoT), NXP, UART, I2C, ADC, FRDM K64F.
 \end{abstract}
 
 \clearpage
@@ -450,12 +437,12 @@ In this project we will see how embedded systems can be programmed to communicat
 
 \renewcommand*\abstractname{Keywords}
 \begin{abstract}
-Embedded systems, wifi connection, ethernet connection, communication between systems, Internet of things (IoT), NXP, uart, I2C, ADC, FRDM K64F.
+Embedded systems, ethernet connection, inter-system communication, Internet of Things (IoT), NXP, UART, I2C, ADC, FRDM K64F.
 \end{abstract}
 
 \clearpage
 
-% Indices
+% Índices
 \tableofcontents
 
 \clearpage
@@ -477,7 +464,25 @@ Embedded systems, wifi connection, ethernet connection, communication between sy
 \include{./tex/7_Conclusiones_Lineas_de_trabajo_futuras}
 
 % Genera la bibliografía.
-\printbibliography
+\bibliographystyle{plain}
+\bibliography{bibliografia}
 
+% Añade el aviso de la licencia.
+\clearpage
+
+\mbox{}
+\vfill
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.2\textwidth]{ccbyncsa}
+\end{figure}
+
+\begin{center}
+  Este obra está bajo una
+  \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+    {licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+    Internacional}.
+\end{center}
 
 \end{document}

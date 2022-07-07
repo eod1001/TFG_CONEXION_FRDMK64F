@@ -8,6 +8,10 @@
 \usepackage{lmodern} % scalable font
 \usepackage{microtype}
 \usepackage{placeins}
+\usepackage{eurosym} % Añade el símbolo del Euro.
+\usepackage{subfig}
+\usepackage{float}
+
 
 \RequirePackage{booktabs}
 \RequirePackage[table]{xcolor}
@@ -15,7 +19,8 @@
 \RequirePackage{multirow}
 
 % Links
-\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks]{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[colorlinks]{hyperref}
 \hypersetup{
 	allcolors = {red}
 }
@@ -35,6 +40,13 @@
 
 % Evitar solapes en el header
 \nouppercaseheads
+
+% Comando para formatear palabras procedentes de otros
+% lenguajes distintos del castellano.
+% Estas palabras se pueden escribir en letra cursiva 
+\newcommand{\extranjerismo}[1]{\textit{#1}}
+% o con comillas si no se dispone de cursiva.
+%\newcommand{\extranjerismo}[1]{"{#1}"}
 
 % Imagenes
 \usepackage{graphicx}
@@ -343,7 +355,7 @@
     \noindent\LARGE
     Presentado por \@author{}\\ 
     en Universidad de Burgos --- \@date{}\\
-    Cotutores: \@tutor{}\\
+    Tutor: \@tutor{}\\
   }%
   \end{center}%
   \null
@@ -353,9 +365,9 @@
 
 
 % Datos de portada
-\title{título del TFG \\Documentación Técnica}
-\author{Enrique del Olmo Dominguez}
-\tutor{Alejandro Merino y Daniel Sarabia}
+\title{Comunicación con Sistemas Embebidos \\Documentación Técnica}
+\author{Enrique del Olmo Domínguez}
+\tutor{Alejandro Merino Gómez y Daniel Sarabia Ortiz}
 \date{\today}
 
 \begin{document}
@@ -403,5 +415,23 @@
 
 \bibliographystyle{plain}
 \bibliography{bibliografiaAnexos}
+
+% Añade el aviso de la licencia.
+\clearpage
+
+\mbox{}
+\vfill
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.2\textwidth]{ccbyncsa}
+\end{figure}
+
+\begin{center}
+  Este obra está bajo una
+  \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}
+    {licencia de Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0
+    Internacional}.
+\end{center}
 
 \end{document}

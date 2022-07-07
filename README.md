@@ -1,17 +1,10 @@
-# Conectividad de Sistemas Embebidos
+# Conectividad TCP/IP en Sistemas Embebidos 🚀
 
 _Este es un Trabajo de Fin de Grado de la universidad de Burgos_
 _Consiste en conseguir la comunicacion de varios Sistemas Embebidos (SE)_
 _La comunicación, es decir el envio de paquetes, sera via Ethernet_
 _El IDE utilizado es MCUXpresso_
 _El Hardware esta compuesto por tres placas FRDM-K64F de NXP, una placa de expansion de arduino, 2 servomotres y una pantalla lcd_
-
-### Comenzando 🚀
-
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
-
 
 ### Pre-requisitos 📋
 
@@ -28,7 +21,7 @@ _1. Instalar el IDE y sdk correspondiente (Mirar documentacion, Manual de Usuari
 _2. Descargar el proyecto del repositorio_
 _3. Compilar el proyecto y cargarlo en la placa_
 
-Puedes encontrar mucho más sobre este proyecto en nuestra [Memoria](https://github.com/eod1001/TFG_CONEXION_FRDMK64F/blob/main/Doc/memoria.pdf)
+Puedes encontrar mucho más sobre este proyecto en la [Memoria](https://github.com/eod1001/TFG_CONEXION_FRDMK64F/blob/main/Doc/memoria.pdf)
 
 ## Autores ✒️
 

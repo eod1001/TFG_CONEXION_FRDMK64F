@@ -24,26 +24,9 @@ Por ejemplo los pinnes que van a la pantalla son el PTE24 (SCL) y PTE25(SDA)
 
 ### Instalación 🔧
 
-_1. Instalar el IDE. (Links mas abajo)_
+_1. Instalar el IDE y sdk correspondiente (Mirar documentacion, Manual de Usuario)_
 _2. Descargar el proyecto del repositorio_
 _3. Compilar el proyecto y cargarlo en la placa_
-
-_Importacion y compilacion del proyecto_
-
-
-
-## Funcionamiento final ⚙️
-
-_El funcionamiento del programa se encuentra detallado en el manual de usuario que esta en los anexos._
-_En caso de que seas desarrollador tambien podras en encontrar el manual de desarrollador para este proyecto en loos anexos._
-
-## Construido (Entre otros) con 🛠️
-
-* [MCUX](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE) - El IDE usado
-* [TERMITE](https://termite.software.informer.com/3.2/) - Consola de comunicacion por comandos
-* [LATEX](https://www.latex-project.org/get/) - Usado para generar Documentacion
-
-## Wiki 📖
 
 Puedes encontrar mucho más sobre este proyecto en nuestra [Memoria](https://github.com/eod1001/TFG_CONEXION_FRDMK64F/blob/main/Doc/memoria.pdf)
 
@@ -52,14 +35,14 @@ Puedes encontrar mucho más sobre este proyecto en nuestra [Memoria](https://git
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Enrique del Olmo Dominguez** - *Realizacion del TFG* - [eod1001](https://github.com/eod1001/TFG_CONEXION_FRDMK64F)
-* **Alejandro Merino Gomez** - *CoTutor* - [AMG](#fulanito-de-tal)
-* **Daniel Sarabia Ortiz** - *CoTutor* - [DSO](#fulanito-de-tal)
+* **Alejandro Merino Gomez** - *CoTutor* 
+* **Daniel Sarabia Ortiz** - *CoTutor*
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia Apache 2.0 
 
 ## Expresiones de Gratitud 🎁
 
-* Me gustaria dar las gracias a mis dos tutores por su tiempo y paciencia para conmigo durante el desarrollo del proyecto.
+* Me gustaria dar las gracias a mis dos tutores por su tiempo y paciencia para conmigo durante el desarrollo del proyecto y a la empresa Kronospan por haberme brindado la posibilidad de poder usar parte de mi proyecto en sus instalaciones.
 
